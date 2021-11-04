@@ -4,21 +4,21 @@ import threading
 import time
 
 
-def getTemperature():
+def get_temperature():
     while True:
         print("Getting the temperature")
         # our temperature code here
         time.sleep(10) # in our code, it will be an hour
 
 
-def getHumidity():
+def get_humidity():
     while True:
         print("Getting the humidity")
         # our temperature code here
         time.sleep(10) # in our code, it will be an hour
 
 
-def buttonOnOFF():
+def button_toggle():
     # add our actual button code here
     while True:
         print("OFF")
@@ -28,9 +28,9 @@ def buttonOnOFF():
 
 if __name__ == "__main__":
     # creating thread
-    t1 = threading.Thread(target=getTemperature)
-    t2 = threading.Thread(target=getHumidity)
-    t3 = threading.Thread(target=buttonOnOFF)
+    t1 = threading.Thread(target=get_temperature)
+    t2 = threading.Thread(target=get_humidity)
+    t3 = threading.Thread(target=button_toggle)
 
     # starting thread 1
     t1.start()
