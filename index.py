@@ -2,10 +2,10 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 
 from app import app
-from apps import initial_dashboard, home_page
+from apps import home_page
 
 from apps.dashboards import humidity_dashboard, temperature_dashboard
-# TODO from apps.utils import dashboard_button
+from apps.utils import dashboard_button
 
 
 app.layout = html.Div([
@@ -23,10 +23,8 @@ def display_page(pathname):
         return humidity_dashboard.layout
     elif pathname == '/dashboards/temperature':
         return temperature_dashboard.layout
-    # TODO I, Sevag, commented this out cz I can't install the RPi
-    # package on my laptop for some reason.
-    # elif pathname == 'utils/dashboard-button':
-        # return dashboard_button.layout
+    elif pathname == '/utils/dashboard-button':
+        return dashboard_button.layout
     else:
         return '404'
 
