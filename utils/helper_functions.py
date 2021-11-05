@@ -3,6 +3,8 @@
 # import adafruit_dht
 # from DHT import get_temp_and_humidity
 
+import random
+
 # dht_device = adafruit_dht.DHT11(board.D22)
 
 def get_temperature() -> int:
@@ -16,10 +18,10 @@ def get_temperature() -> int:
     # temperature_received = get_temp_and_humidity()[0]
     # print("This is the temperature :" , temperature_received)
     # return temperature_received
-    return 1
+    return random.randint(3, 9)
 
 def get_humidity() -> int :
     # humidity_received = get_temp_and_humidity()[1]
     # print("This is the temperature :" , humidity_received)
     # return humidity_received
-    return 2
+    return random.randint(3, 9)
