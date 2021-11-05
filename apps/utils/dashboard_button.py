@@ -4,17 +4,18 @@ from dash import Dash, dcc, html, Input, Output, State
 import plotly.graph_objects as go
 
 from app import app
-
-GPIO.setmode(GPIO.BCM)
+pin = 32
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-GPIO.setup(6, GPIO.OUT)
+GPIO.setup(pin, GPIO.OUT)
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 layout = html.Div([
     html.Div(dcc.Input(id='input-on-submit')),
     html.Button('Submit', id='submit-val', n_clicks=0),
     html.Div(id='container-button-basic',
-             children='Enter a value and press submit')
+             children='Enter a value and press submit'),
+    dcc.Link('Go to Home Page', href='/')
 ])
 
 @app.callback(
@@ -25,7 +26,7 @@ layout = html.Div([
 def update_output(n_clicks, value):
     if (n_clicks % 2 == 1):
         print("ON")
-        GPIO.output(6, True)
+        GPIO.output(pin, True)
     else:
         print("OFF")
-        GPIO.output(6, False)
+        GPIO.output(pin, False)
