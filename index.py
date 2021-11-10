@@ -5,7 +5,7 @@ from app import app
 from apps import home_page
 
 from apps.dashboards import humidity_dashboard, temperature_dashboard
-from apps.utils import dashboard_button
+# from apps.utils import dashboard_button
 
 
 app.layout = html.Div([
@@ -23,8 +23,8 @@ def display_page(pathname):
         return humidity_dashboard.layout
     elif pathname == '/dashboards/temperature':
         return temperature_dashboard.layout
-    elif pathname == '/utils/dashboard-button':
-        return dashboard_button.layout
+    # elif pathname == '/utils/dashboard-button':
+    #     return dashboard_button.layout
     else:
         return '404'
 

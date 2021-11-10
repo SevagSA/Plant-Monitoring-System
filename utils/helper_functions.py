@@ -1,7 +1,7 @@
 # import time
 # import board
 # import adafruit_dht
-from .DHT import get_temp, get_humid
+# from .DHT import get_temp, get_humid
 
 import random
 
