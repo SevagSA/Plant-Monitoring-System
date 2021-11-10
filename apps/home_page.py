@@ -4,8 +4,8 @@ from app import app
 from dash import dcc, html
 from dash.dependencies import Input, Output
 
-# from utils.helper_functions import get_humidity, get_temperature
-
+from utils.helper_functions import get_humidity, get_temperature, dc_motor_on
+dc_motor_on()
 layout = html.Div([
     html.H3('Plant Monitoring System Home Page'),
     html.Br(),
