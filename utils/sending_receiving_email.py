@@ -4,13 +4,14 @@ import time
 import ssl
 import email
 import imaplib
+from .dc_motor import motor_on
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
-def sendEmail(text):
+def send_email(text):
     sender ="vanieraliiot@gmail.com"
-    password = "password"
-    receiver = "vanieriotali2@gmail.com"
+    password = "CrazyChicken123"
+    receiver = "vanieraliiot@gmail.com"
     port = 465
     subject = "From Rpi Ali Lezzeik"
     message = 'Subject: {}\n\n{}'.format(subject, text)
@@ -22,10 +23,10 @@ def sendEmail(text):
         server.sendmail(sender, receiver, message)
         print("sent email!")
 
-def receiveEmailChecker() :
+def receive_email() :
     while True:
         mail = imaplib.IMAP4_SSL('imap.gmail.com')
-        mail.login('vanieraliiot@gmail.com', 'password')
+        mail.login('vanieraliiot@gmail.com', 'CrazyChicken123')
         mail.list()
         mail.select("inbox") # connect to inbox.
         result, data = mail.search(None, "(UNSEEN)")
@@ -51,13 +52,12 @@ def receiveEmailChecker() :
                 return "no"
             else:
                 return "Invalid"
-=
-question = input("Would you like to turn on the fan? yes or no : ")
-sendEmail(question)
+send_email("Turn on fan?")
 while True:
-    answer = receiveEmailChecker()
+    answer = receive_email()
     if( answer == 'yes'):
          print("On")
+         motor_on()
          break
     elif(answer == 'no'):
         print("Off")
