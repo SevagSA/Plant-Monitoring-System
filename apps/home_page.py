@@ -13,41 +13,31 @@ layout = html.Div([
             [
                 dbc.Col(html.Div([
                         html.H4("Temperature Dashboard"),
-                        html.P(""),
+                        html.P("Track the temperature of the room that your plant is in."),
+                        dcc.Link(dbc.Button("Temperature Dashboard", color="primary", className="me-1", 
+                            style={"background-color":'chocolate', "border": "none"}), href='/dashboards/temperature'),
                     ]),
                     style={'backgroundColor':'#000080', 'color': 'white', 'text-align':"center", 'margin': '5px', 'padding': '5px'}),
                 dbc.Col(html.Div([
                         html.H4("Humidity Dashboard"),
-                        html.P(""),
+                        html.P("Track the humidity of the room that your plant is in."),
+                        dcc.Link(dbc.Button("Humidity Dashboard", color="primary", className="me-1", 
+                            style={"background-color":'#000080', "border": "none"}), href='/dashboards/temperature'),
                 ]),  style={'backgroundColor':'chocolate', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
-                dbc.Col(html.Div([
-                        html.H4("LED Button"),
-                        html.P(""),
-                ]), style={'backgroundColor':'#000080', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
+            ],
+        ),
+        dbc.Row([
                 dbc.Col(html.Div([
                         html.H4("Photoresistor"),
-                        html.P(""),
+                        html.P("Measure the lighting of the room that your plant is in."),
+                        dcc.Link(dbc.Button("Photoresitor", color="primary", className="me-1",
+                            style={"background-color":'#000080', "border": "none"}), href='/utils/dashboard-button',)
                 ]), style={'backgroundColor':'chocolate', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
-            ]
-        ),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-
-    html.H5("Latest Humidity is: " + """str(get_humidity())"""),
-    dcc.Link(dbc.Button("Humidity Dashboard", color="primary", className="me-1"), href='/dashboards/humidity'),
-    html.Br(),
-    html.H5("Latest Temperature is: " + """str(get_temperature())"""),
-    dcc.Link(dbc.Button("Temperature Dashboard", color="primary", className="me-1"), href='/dashboards/temperature'),
-    html.Br(),
-    dcc.Link(dbc.Button("Dashboard Button", color="primary", className="me-1"), href='/utils/dashboard-button')
-])
+                dbc.Col(html.Div([
+                        html.H4("LED Button"),
+                        html.P("Toggle an LED with the click of a button."),
+                        dcc.Link(dbc.Button("Dashboard Button", color="primary", className="me-1",
+                            style={"background-color":'chocolate', "border": "none"}), href='/utils/dashboard-button',)
+                ]), style={'backgroundColor':'#000080', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
+        ]),
+], style={"padding": '30px'})
