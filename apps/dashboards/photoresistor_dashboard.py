@@ -1,8 +1,9 @@
 from dash import Dash, dcc, html, Input, Output, State
+from app import app
 
 app = Dash(__name__)
 
-app.layout = html.Div([
+layout = html.Div([
     html.H1(id='heading2', children='The Photoresistor (...and 2 LEDs)'),
     html.P(id='informationHeading', children='Functionality:'),
     html.P(id='information', children='IF (Light Intensity < threshold) THEN (turn ON LEDs) AND (Send Email that LEDs are ON)'),
@@ -12,7 +13,8 @@ app.layout = html.Div([
     html.P(id='container-button-basic',
              children='Please enter a photoresistor threshold.'),
     html.Div(dcc.Input(id='input-on-submit', type='number')),
-    html.Button('Apply Threshold', id='submit-val', n_clicks=0)
+    html.Button('Apply Threshold', id='submit-val', n_clicks=0),
+    dcc.Link('Go to Home Page', href='/')
 ])
 
 

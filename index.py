@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output
 from app import app
 from apps import home_page
 
-from apps.dashboards import humidity_dashboard, temperature_dashboard
+from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard
 #import utils.sending_receiving_email
 # from apps.utils import dashboard_button
 
@@ -24,6 +24,8 @@ def display_page(pathname):
         return humidity_dashboard.layout
     elif pathname == '/dashboards/temperature':
         return temperature_dashboard.layout
+    elif pathname == '/dashboards/photoresistor':
+        return photoresistor_dashboard.layout
     # elif pathname == '/utils/dashboard-button':
     #     return dashboard_button.layout
     else:

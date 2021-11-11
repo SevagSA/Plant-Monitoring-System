@@ -40,7 +40,7 @@ layout = html.Div([
                         html.H4("Humidity Dashboard"),
                         html.P("Track the humidity of the room that your plant is in."),
                         dcc.Link(dbc.Button("Humidity Dashboard", color="primary", className="me-1", 
-                            style={"background-color":'#000080', "border": "none"}), href='/dashboards/temperature'),
+                            style={"background-color":'#000080', "border": "none"}), href='/dashboards/humidity'),
                 ]),  style={'backgroundColor':'chocolate', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
             ],
         ),
@@ -49,7 +49,7 @@ layout = html.Div([
                         html.H4("Photoresistor"),
                         html.P("Measure the lighting of the room that your plant is in."),
                         dcc.Link(dbc.Button("Photoresitor", color="primary", className="me-1",
-                            style={"background-color":'#000080', "border": "none"}), href='/utils/dashboard-button',)
+                            style={"background-color":'#000080', "border": "none"}), href='/dashboards/photoresistor',)
                 ]), style={'backgroundColor':'chocolate', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
                 dbc.Col(html.Div([
                         html.H4("LED Button"),
