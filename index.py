@@ -5,7 +5,7 @@ from app import app
 from apps import home_page
 
 from apps.dashboards import humidity_dashboard, temperature_dashboard
-import utils.sending_receiving_email
+#import utils.sending_receiving_email
 # from apps.utils import dashboard_button
 
 

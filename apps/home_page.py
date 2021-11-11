@@ -6,7 +6,26 @@ from dash.dependencies import Input, Output
 
 from utils.helper_functions import get_humidity, get_temperature, dc_motor_on
 layout = html.Div([
-    html.H3('Plant Monitoring System Home Page'),
+ 
+   html.H3(
+        children='Plant Monitoring System Home Page',
+        style={
+            'textAlign': 'center',
+            'color': 'black',
+            'margin-bottom': '20px',
+            'font-weight': 'bold'
+        }
+    ),
+       html.Img(
+            src="https://www.worldatlas.com/r/w1200-q80/upload/89/99/3b/shutterstock-1263201358.jpg",
+            style={
+               'max-width': '100%',
+               'height': "200px",
+               'display': 'block',
+               'margin-left': 'auto',
+               'margin-right': 'auto'
+            }
+        ),
     html.Br(),
         dbc.Row(
             [
