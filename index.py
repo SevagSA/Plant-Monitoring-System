@@ -1,5 +1,6 @@
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
 
 from app import app
 from apps import home_page
@@ -8,9 +9,13 @@ from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresi
 #import utils.sending_receiving_email
 # from apps.utils import dashboard_button
 
+CONTENT_STYLE = {
+    "margin-left": "18rem",
+    "margin-right": "2rem",
+    "padding": "2rem 1rem",
+}
 
-app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
+content = html.Div([
     html.Div(id='page-content'),
     html.P(
         children='Plant Monitoring System',
@@ -23,10 +28,42 @@ app.layout = html.Div([
             'textAlign': 'center',
             'color': 'white',
             'background-color' : '#000080'
-        }
-    )
-], style={"padding": '30px'})
+        })
+], style=CONTENT_STYLE)
 
+SIDEBAR_STYLE = {
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "16rem",
+    "padding": "2rem 1rem",
+    "color": "white",
+    "background-color": "#000080",
+}
+
+
+sidebar = html.Div(
+    [
+        html.H4("Welcome Ali", className="display-6"),
+        html.Hr(),
+        html.P("Plant Monitoring System", className="lead"),
+        dbc.Nav(
+            [
+                dbc.NavLink("Home", href="/", active="exact"),
+                dbc.NavLink("Temperature Dashboard", href='/dashboards/temperature', active="exact"),
+                dbc.NavLink("Humidity Dashboard", href='/dashboards/humidity', active="exact"),
+                dbc.NavLink("Photoresistor", href='/dashboards/photoresistor', active="exact"),
+            ],
+            vertical=True,
+            pills=True,
+        ),
+    ],
+    style=SIDEBAR_STYLE,
+)
+
+
+app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))

@@ -8,8 +8,9 @@ from utils.helper_functions import get_temperature,dc_motor_on
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
-global threshold_value
+# global threshold_value
 threshold_value = 24
+
 layout = html.Div([
     html.H3('Temperature Dashboard',
             style={
