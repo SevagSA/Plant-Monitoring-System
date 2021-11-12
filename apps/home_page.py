@@ -1,12 +1,21 @@
+import time
+# import RPi.GPIO as GPIO
+import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
 from app import app
-from dash import dcc, html
 from dash.dependencies import Input, Output
-
+from dash import dcc, html, Input, Output, State
 from utils.helper_functions import get_humidity, get_temperature, dc_motor_on
+
+# For LED
+# pin = 32
+# GPIO.setmode(GPIO.BOARD)
+# GPIO.setwarnings(False)
+# GPIO.setup(pin, GPIO.OUT)
+# GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
 layout = html.Div([
- 
    html.H3(
         children='Plant Monitoring System Home Page',
         style={
@@ -55,8 +64,24 @@ layout = html.Div([
                 dbc.Col(html.Div([
                         html.H4("LED Button"),
                         html.P("Toggle an LED with the click of a button."),
-                        dcc.Link(dbc.Button("Dashboard Button", color="primary", className="me-1",
-                            style={"background-color":'chocolate', "border": "none"}), href='/utils/dashboard-button',)
+                        dbc.Button("Toggle Button", id='submit-val', color="primary", className="me-1", n_clicks=0,
+                            style={"background-color":'chocolate', "border": "none"}),
+                        html.Div(id='input-on-submit'),
+                        html.Div(id='container-button-basic')
+
                 ]), style={'backgroundColor':'#000080', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
         ]),
 ])
+
+@app.callback(
+    Output('container-button-basic', 'children'),
+    Input('submit-val', 'n_clicks'),
+    State('input-on-submit', 'value')
+)
+def update_output(n_clicks, value):
+    if (n_clicks % 2 == 1):
+        print("ON")
+        # GPIO.output(pin, True)
+    else:
+        print("OFF")
+        # GPIO.output(pin, False)
