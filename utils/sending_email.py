@@ -1,10 +1,15 @@
 import smtplib
 import RPi.GPIO as GPIO
 import ssl
+import time
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-led = 26
-def email():
+led = 33
+def email_send():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(led,GPIO.OUT)
+    GPIO.output(led,1)
+    time.sleep(10)
+    GPIO.output(led,0)
     sender ="vanieraliiot@gmail.com"
     password = "CrazyChicken123"
     receiver = "vanieraliiot@gmail.com"
@@ -21,10 +26,8 @@ def email():
         server.login(sender, password)
         server.sendmail(sender, receiver, message)
         print("sent email!")
-GPIO.setup(led,GPIO.OUT)
-GPIO.setup(button, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-email()
-GPIO.output(led,1)
+    
+
 
 
             

@@ -4,12 +4,11 @@ import dash_bootstrap_components as dbc
 
 from app import app
 
-from utils.helper_functions import get_light
+from utils.helper_functions import get_light, led_on
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 light_list = []
-global threshold_value
-threshold_value = 24
+threshold_value = None
 layout = html.Div([
     html.H3('Photoresistor Dashboard',
             style={
@@ -54,13 +53,13 @@ def run_script_onClick(n_clicks):
     print("Running....")
     print(threshold_value is not None)
     if threshold_value is not None and current_light > threshold_value:
-        #print("Getting the threshold value : " + str(threshold_value))
-        #print("Current Threshold is : ")
-        #print(threshold_value)
-        #print("Current Temperature is : ")
-        #print(current_temperature)
+        print("Getting the threshold value : " + str(threshold_value))
+        print("Current Threshold is : ")
+        print(threshold_value)
+        print("Current Light is : ")
+        print(current_light)
         print("It is higher")
-        #dc_motor_on()
+        led_on()
     
     light_list.append(current_light)
     return [{

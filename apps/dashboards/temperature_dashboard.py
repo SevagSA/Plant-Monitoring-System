@@ -4,11 +4,10 @@ import dash_bootstrap_components as dbc
 
 from app import app
 
-from utils.helper_functions import get_temperature,dc_motor_on
+from utils.helper_functions import get_temperature,send_email
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
-# global threshold_value
 threshold_value = 24
 
 layout = html.Div([
@@ -53,20 +52,18 @@ def update_output(n_clicks, input_value):
     [Input('get-temp-btn', 'n_clicks')])
 def run_script_onClick(n_clicks):
     current_temperature = get_temperature()
-    print("Running....")
-    print(threshold_value is not None)
-    if threshold_value is not None and current_temperature > threshold_value:
-        
-        #print("Getting the threshold value : " + str(threshold_value))
-        #print("Current Threshold is : ")
-        #print(threshold_value)
-        #print("Current Temperature is : ")
-        #print(current_temperature)
+    if threshold_value and current_temperature > threshold_value:
+        print("Getting the threshold value : " + str(threshold_value))
+        print("Current Threshold is : ")
+        print(threshold_value)
+        print("Current Temperature is : ")
+        print(current_temperature)
         print("It is higher")
-        #sendEmail
-    
+        send_email()
+        
     temperature_list.append(current_temperature)
-    return [{
+    print(current_temperature, "here")
+    return {
             'data': [
                 {'x': time_of_day, 'y': temperature_list, 'type': 'line', 'name': 'Humidity'},
             ],
@@ -79,4 +76,4 @@ def run_script_onClick(n_clicks):
                     'title': 'Temperature'
                 }
             },
-        }]
+        }

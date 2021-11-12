@@ -1,5 +1,5 @@
 import time
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
@@ -9,11 +9,10 @@ from dash import dcc, html, Input, Output, State
 from utils.helper_functions import get_humidity, get_temperature, dc_motor_on
 
 # For LED
-# pin = 32
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setwarnings(False)
-# GPIO.setup(pin, GPIO.OUT)
-# GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+pin = 40
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
 
 layout = html.Div([
    html.H3(
@@ -81,7 +80,7 @@ layout = html.Div([
 def update_output(n_clicks, value):
     if (n_clicks % 2 == 1):
         print("ON")
-        # GPIO.output(pin, True)
+        GPIO.output(pin, True)
     else:
         print("OFF")
-        # GPIO.output(pin, False)
+        GPIO.output(pin, False)

@@ -1,23 +1,26 @@
-# import time
-# import board
-# import adafruit_dht
-# from .DHT import get_temp, get_humid
 from .dc_motor import motor_on
+
+from .DHT import get_temp, get_humid
+from .sending_receiving_email import execute_email_service
+from .sending_email import email_send
 
 import random
 
-# dht_device = adafruit_dht.DHT11(board.D22)
 
 def get_temperature():
+    return get_temp()
 
-   return 11
+def send_email():
+    return execute_email_service()
 
 def get_humidity():
-   return get_humid()
+     return get_humid()
 
 def dc_motor_on():
     motor_on()
-    
+
+def led_on():
+    email_send()
 
 def get_light():
    return 600

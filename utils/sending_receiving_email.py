@@ -6,7 +6,6 @@ import email
 import imaplib
 from .dc_motor import motor_on
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
 
 def send_email(text):
     sender ="vanieraliiot@gmail.com"
@@ -52,19 +51,22 @@ def receive_email() :
                 return "no"
             else:
                 return "Invalid"
-send_email("Turn on fan?")
-while True:
-    answer = receive_email()
-    if( answer == 'yes'):
-         print("On")
-         motor_on()
-         break
-    elif(answer == 'no'):
-        print("Off")
-        break
-    else :
-        print("Checking inbox for emails...")
-        time.sleep(3)
+
+
+def execute_email_service():
+    send_email("Turn on fan?")
+    while True:
+        answer = receive_email()
+        if( answer == 'yes'):
+             print("On")
+             motor_on()
+             break
+        elif(answer == 'no'):
+            print("Off")
+            break
+        else :
+            print("Checking inbox for emails...")
+            time.sleep(3)
         
     
         
