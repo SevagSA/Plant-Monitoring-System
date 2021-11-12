@@ -1,14 +1,15 @@
 from dash import dcc, html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output,State
 import dash_bootstrap_components as dbc
 
 from app import app
 
-from utils.helper_functions import get_temperature
+from utils.helper_functions import get_temperature,dc_motor_on
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
-
+global threshold_value
+threshold_value = 24
 layout = html.Div([
     html.H3('Temperature Dashboard'),
     dbc.Button("Get Temperature", id='get-temp-btn', n_clicks=0, color="danger", className="me-1"),
@@ -17,16 +18,40 @@ layout = html.Div([
         figure={}
     ),
     html.Div(id='output-container-button', children='Hit the button to update.'),
+    dcc.Input(id='temperature-threshold', type='number'),
+    html.Button(id='submit-temperature-threshold', type='submit', children='Submit Threshold'),
+    html.P(id='temperature-threshold-text', children='Please enter a photoresistor threshold.'),
     dcc.Link('Go to Home Page', href='/')
 ])
-
-
+@app.callback(Output('temperature-threshold-text', 'children'),[Input('submit-temperature-threshold', 'n_clicks')],[State('temperature-threshold', 'value')],)
+def update_output(n_clicks, input_value):
+        global threshold_value
+        threshold_value = input_value
+        print("Modified thresholdValue : " + str(threshold_value))
+        if n_clicks is not None:
+            return u'''
+        The current threshold is {}.
+    '''.format(input_value)
+    
 @app.callback(
     Output('temperature-graph', 'figure'),
     [Input('get-temp-btn', 'n_clicks')])
 def run_script_onClick(n_clicks):
-    temperature_list.append(get_temperature())
-    return {
+    current_temperature = get_temperature()
+    print("Running....")
+    print(threshold_value is not None)
+    if threshold_value is not None and current_temperature > threshold_value:
+        
+        #print("Getting the threshold value : " + str(threshold_value))
+        #print("Current Threshold is : ")
+        #print(threshold_value)
+        #print("Current Temperature is : ")
+        #print(current_temperature)
+        print("It is higher")
+        #sendEmail
+    
+    temperature_list.append(current_temperature)
+    return [{
             'data': [
                 {'x': time_of_day, 'y': temperature_list, 'type': 'line', 'name': 'Humidity'},
             ],
@@ -39,4 +64,4 @@ def run_script_onClick(n_clicks):
                     'title': 'Temperature'
                 }
             },
-        }
+        }]

@@ -10,10 +10,14 @@ import random
 
 def get_temperature():
 
-   return get_temp()
+   return 11
 
 def get_humidity():
    return get_humid()
 
 def dc_motor_on():
     motor_on()
+    
+
+def get_light():
+   return 600

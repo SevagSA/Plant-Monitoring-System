@@ -1,34 +1,66 @@
-from dash import Dash, dcc, html, Input, Output, State
+from dash import dcc, html
+from dash.dependencies import Input, Output,State
+import dash_bootstrap_components as dbc
+
 from app import app
 
-app = Dash(__name__)
+from utils.helper_functions import get_light
 
+time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+light_list = []
+global threshold_value
+threshold_value = 24
 layout = html.Div([
-    html.H1(id='heading2', children='The Photoresistor (...and 2 LEDs)'),
-    html.P(id='informationHeading', children='Functionality:'),
-    html.P(id='information', children='IF (Light Intensity < threshold) THEN (turn ON LEDs) AND (Send Email that LEDs are ON)'),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.P(id='container-button-basic',
-             children='Please enter a photoresistor threshold.'),
-    html.Div(dcc.Input(id='input-on-submit', type='number')),
-    html.Button('Apply Threshold', id='submit-val', n_clicks=0),
+    html.H3('Photoresistor Dashboard'),
+    dbc.Button("Get Light", id='get-light-btn', n_clicks=0, color="danger", className="me-1"),
+    dcc.Graph(
+        id='photoresistor-graph',
+        figure={}
+    ),
+    html.Div(id='output-container-button', children='Hit the button to update.'),
+    dcc.Input(id='light-threshold', type='number'),
+    html.Button(id='submit-light-threshold', type='submit', children='Submit Threshold'),
+    html.P(id='light-threshold-text', children='Please enter a photoresistor threshold.'),
     dcc.Link('Go to Home Page', href='/')
 ])
-
-
+@app.callback(Output('light-threshold-text', 'children'),[Input('submit-light-threshold', 'n_clicks')],[State('light-threshold', 'value')],)
+def update_output(n_clicks, input_value):
+        global threshold_value
+        threshold_value = input_value
+        print("Modified thresholdValue : " + str(threshold_value))
+        if n_clicks is not None:
+            return u'''
+        The current threshold is {}.
+    '''.format(input_value)
+    
 @app.callback(
-    Output('container-button-basic', 'children'),
-    Input('submit-val', 'n_clicks'),
-    State('input-on-submit', 'value')
-)
-def update_output(n_clicks, value):
-    return 'Current Photoresistor threshold: [{}].'.format(
-        value,
-        n_clicks
-    )
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
+    Output('photoresistor-graph', 'figure'),
+    [Input('get-light-btn', 'n_clicks')])
+def run_script_onClick(n_clicks):
+    current_light = get_light()
+    print("Running....")
+    print(threshold_value is not None)
+    if threshold_value is not None and current_light > threshold_value:
+        #print("Getting the threshold value : " + str(threshold_value))
+        #print("Current Threshold is : ")
+        #print(threshold_value)
+        #print("Current Temperature is : ")
+        #print(current_temperature)
+        print("It is higher")
+        #dc_motor_on()
+    
+    light_list.append(current_light)
+    return [{
+            'data': [
+                {'x': time_of_day, 'y': light_list, 'type': 'line', 'name': 'Humidity'},
+            ],
+            'layout': {
+                'title': 'Plant average light per hour',
+                'xaxis': {
+                    'title': 'Time of day'
+                },
+                'yaxis': {
+                    'title': 'Temperature'
+                }
+            },
+        }]
