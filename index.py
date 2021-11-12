@@ -11,8 +11,21 @@ from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresi
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content')
-])
+    html.Div(id='page-content'),
+    html.P(
+        children='Plant Monitoring System',
+        style={
+            'display':'flex',
+            'justify-content':'center',
+            'align-items': 'center',
+            'height': '20vh',
+            'margin-top':'2.4%',
+            'textAlign': 'center',
+            'color': 'white',
+            'background-color' : '#000080'
+        }
+    )
+], style={"padding": '30px'})
 
 
 @app.callback(Output('page-content', 'children'),

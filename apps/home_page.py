@@ -11,9 +11,10 @@ layout = html.Div([
         children='Plant Monitoring System Home Page',
         style={
             'textAlign': 'center',
-            'color': 'black',
+            'color': 'white',
+            'padding': '10px',
             'margin-bottom': '20px',
-            'font-weight': 'bold'
+            'background-color' : '#000080'
         }
     ),
        html.Img(
@@ -58,4 +59,4 @@ layout = html.Div([
                             style={"background-color":'chocolate', "border": "none"}), href='/utils/dashboard-button',)
                 ]), style={'backgroundColor':'#000080', 'color': 'white', 'text-align':"center", 'margin': '5px','padding': '5px'}),
         ]),
-], style={"padding": '30px'})
+])

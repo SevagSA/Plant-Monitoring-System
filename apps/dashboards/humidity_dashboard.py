@@ -11,13 +11,22 @@ time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 humidity_list = []
 
 layout = html.Div([
-    html.H3('Humidity Dashboard'),
-    dbc.Button("Get Humidity", id='get-humidity-btn', n_clicks=0, color="danger", className="me-1"),
+    html.H3('Humidity Dashboard',
+            style={
+            'textAlign': 'center',
+            'color': 'white',
+            'padding': '10px',
+            'margin-bottom': '20px',
+            'background-color' : '#000080'
+        }),
     dcc.Graph(
         id='humidity-graph',
         figure={}
     ),
-    dcc.Link('Go to Home Page', href='/')
+    html.Div([
+        dcc.Link('Go to Home Page', href='/'),
+        dbc.Button("Get Humidity", id='get-humidity-btn', n_clicks=0, style={'background-color':'chocolate', 'border':'none'}, className="me-1"),
+    ], style={'display': 'flex', 'justify-content': 'space-between'})
 ])
 
 @app.callback(

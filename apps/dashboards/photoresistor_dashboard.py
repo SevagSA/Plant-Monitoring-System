@@ -11,17 +11,30 @@ light_list = []
 global threshold_value
 threshold_value = 24
 layout = html.Div([
-    html.H3('Photoresistor Dashboard'),
-    dbc.Button("Get Light", id='get-light-btn', n_clicks=0, color="danger", className="me-1"),
+    html.H3('Photoresistor Dashboard',
+            style={
+            'textAlign': 'center',
+            'color': 'white',
+            'padding': '10px',
+            'margin-bottom': '20px',
+            'background-color' : '#000080'
+        }),
     dcc.Graph(
         id='photoresistor-graph',
         figure={}
     ),
-    html.Div(id='output-container-button', children='Hit the button to update.'),
-    dcc.Input(id='light-threshold', type='number'),
-    html.Button(id='submit-light-threshold', type='submit', children='Submit Threshold'),
-    html.P(id='light-threshold-text', children='Please enter a photoresistor threshold.'),
-    dcc.Link('Go to Home Page', href='/')
+    html.Div([
+        dcc.Link('Go to Home Page', href='/'),
+        html.Div([
+            # html.Div(id='output-container-button', children='Hit the button to update.'),
+            dcc.Input(id='light-threshold', type='number'),
+            dbc.Button("Submit Threshold", id='submit-light-threshold', n_clicks=0, type='submit',
+                style={'background-color' : '#000080', 'border': 'none', 'height': '45px', 'margin':'10px 0px'}, className="me-1"),
+            html.P(id='light-threshold-text', children='Please enter a photoresistor threshold.'),
+        ], style={'display':'flex', 'flex-direction' : 'column', 'align-items':'center', 'align-items': 'center', 'padding':'10px'}),
+        dbc.Button("Get Light", id='get-light-btn', n_clicks=0, 
+            style={'background-color' : 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
+    ], style={'display': 'flex', 'justify-content': 'space-between', 'align-items':'center'})
 ])
 @app.callback(Output('light-threshold-text', 'children'),[Input('submit-light-threshold', 'n_clicks')],[State('light-threshold', 'value')],)
 def update_output(n_clicks, input_value):
