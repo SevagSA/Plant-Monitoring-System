@@ -37,7 +37,6 @@ layout = html.Div([
 ])
 @app.callback(Output('light-threshold-text', 'children'),[Input('submit-light-threshold', 'n_clicks')],[State('light-threshold', 'value')],)
 def update_output(n_clicks, input_value):
-        global threshold_value
         threshold_value = input_value
         print("Modified thresholdValue : " + str(threshold_value))
         if n_clicks is not None:
@@ -62,7 +61,7 @@ def run_script_onClick(n_clicks):
         led_on()
     
     light_list.append(current_light)
-    return [{
+    return {
             'data': [
                 {'x': time_of_day, 'y': light_list, 'type': 'line', 'name': 'Humidity'},
             ],
@@ -75,4 +74,4 @@ def run_script_onClick(n_clicks):
                     'title': 'Temperature'
                 }
             },
-        }]
+        }

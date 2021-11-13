@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 
 from app import app
 
-from utils.helper_functions import get_temperature,send_email
+from utils.helper_functions import get_temperature, send_email
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
