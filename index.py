@@ -45,7 +45,7 @@ SIDEBAR_STYLE = {
 
 sidebar = html.Div(
     [
-        html.H4("Welcome Ali", className="display-6"),
+        html.H4("Welcome User", className="display-6"),
         html.Hr(),
         html.P("Plant Monitoring System", className="lead"),
         dbc.Nav(
