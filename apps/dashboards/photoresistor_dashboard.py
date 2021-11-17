@@ -19,7 +19,7 @@ threshold_value = None
 
 broker = 'broker.emqx.io'
 port = 1883
-topic = "room/light"
+topic = "iot/photoresistor/team3"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 username = 'emqx'
@@ -117,6 +117,7 @@ def connect_mqtt() -> mqtt_client:
 
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
+        print(msg.payload.decode())
         light_list.append(int(msg.payload.decode()))
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
 
