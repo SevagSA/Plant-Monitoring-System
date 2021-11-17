@@ -1,9 +1,11 @@
 # import RPi.GPIO as GPIO
+import random
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
 from app import app
 from dash.dependencies import Input, Output
+from paho.mqtt import client as mqtt_client
 from dash import dcc, html, Input, Output, State
 from utils.helper_functions import get_humidity, get_temperature, dc_motor_on, get_light
 
@@ -12,6 +14,14 @@ pin = 40
 # GPIO.setmode(GPIO.BOARD)
 # GPIO.setwarnings(False)
 # GPIO.setup(pin, GPIO.OUT)
+
+broker = 'broker.emqx.io'
+port = 1883
+topic = "iot/rfid/team3"
+# generate client ID with pub prefix randomly
+client_id = f'python-mqtt-{random.randint(0, 100)}'
+username = 'emqx'
+password = 'public'
 
 layout = html.Div([
     html.H3(
@@ -94,3 +104,36 @@ def update_output(n_clicks, value):
         print("OFF")
         # GPIO.output(pin, False)
         return "Currently the LED is Off"
+
+
+def connect_mqtt() -> mqtt_client:
+    def on_connect(client, userdata, flags, rc):
+        if rc == 0:
+            print("Connected to MQTT Broker!")
+            subscribe(client)
+        else:
+            print("Failed to connect, return code %d\n", rc)
+
+    client = mqtt_client.Client(client_id)
+    client.username_pw_set(username, password)
+    client.on_connect = on_connect
+    client.connect(broker, port)
+    return client
+
+
+def subscribe(client: mqtt_client):
+    def on_message(client, userdata, msg):
+        print(msg.payload.decode())
+        print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
+
+    client.subscribe(topic)
+    client.on_message = on_message
+
+
+def run():
+    client = connect_mqtt()
+    client.loop_start()
+    
+    
+run()
+

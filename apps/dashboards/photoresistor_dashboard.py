@@ -105,6 +105,7 @@ def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             print("Connected to MQTT Broker!")
+            subscribe(client)
         else:
             print("Failed to connect, return code %d\n", rc)
 
@@ -127,5 +128,5 @@ def subscribe(client: mqtt_client):
 
 def run():
     client = connect_mqtt()
-    subscribe(client)
+    #subscribe(client)
     client.loop_start()
