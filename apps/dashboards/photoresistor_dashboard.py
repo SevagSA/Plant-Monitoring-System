@@ -13,8 +13,9 @@ time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 light_list = []
+values = []
 
-threshold_value = None
+threshold_value = 1500
 
 
 broker = 'broker.emqx.io'
@@ -57,12 +58,17 @@ layout = html.Div([
 
 @ app.callback(Output('light-threshold-text', 'children'), [Input('submit-light-threshold', 'n_clicks')], [State('light-threshold', 'value')],)
 def update_output(n_clicks, input_value):
-    threshold_value = input_value
-    print("Modified thresholdValue : " + str(threshold_value))
-    if n_clicks is not None:
-        return u'''
-        The current threshold is {}.
-    '''.format(input_value)
+    if input_value:
+        
+        print(input_value)
+        global threshold_value
+        threshold_value = input_value
+        print("Modified thresholdValue : " + str(threshold_value))
+        if n_clicks is not None:
+            return u'''
+            The current threshold is {}.
+        '''.format(input_value)
+    return "Please enter a value"
 
 
 @ app.callback(
@@ -71,19 +77,8 @@ def update_output(n_clicks, input_value):
     State('input-on-submit', 'value')
 )
 def run_script_onClick(n_clicks, value):
-    current_light = get_light()
-    print("Running....")
-    print(threshold_value is not None)
-    if threshold_value is not None and current_light > threshold_value:
-        print("Getting the threshold value : " + str(threshold_value))
-        print("Current Threshold is : ")
-        print(threshold_value)
-        print("Current Light is : ")
-        print(current_light)
-        print("It is higher")
-        led_on()
+    values.clear()
     run()
-    light_list.append(current_light)
     return {
         'data': [
             {'x': time_of_day, 'y': light_list,
@@ -104,7 +99,6 @@ def run_script_onClick(n_clicks, value):
 def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
-            print("Connected to MQTT Broker!")
             subscribe(client)
         else:
             print("Failed to connect, return code %d\n", rc)
@@ -116,11 +110,19 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
+
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
-        print(msg.payload.decode())
-        light_list.append(int(msg.payload.decode()))
-        print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
+        values.append(int(msg.payload.decode()))
+        
+        if len(values) == 1:
+            light_list.append(values[0])
+            print("This is the value : " + str(threshold_value))
+            print(values[0] > threshold_value)
+            if threshold_value and values[0] > threshold_value:
+                led_on()
+                print("light is higher than threshold")
+        #print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
 
     client.subscribe(topic)
     client.on_message = on_message
