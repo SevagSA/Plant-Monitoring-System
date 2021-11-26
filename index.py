@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 from app import app
 from apps import home_page
 
-from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard
+from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard, bluetooth
 #import utils.sending_receiving_email
 # from apps.utils import dashboard_button
 
@@ -54,6 +54,7 @@ sidebar = html.Div(
                 dbc.NavLink("Temperature Dashboard", href='/dashboards/temperature', active="exact"),
                 dbc.NavLink("Humidity Dashboard", href='/dashboards/humidity', active="exact"),
                 dbc.NavLink("Photoresistor", href='/dashboards/photoresistor', active="exact"),
+                dbc.NavLink("Bluetooth", href='/dashboards/bluetooth', active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -76,8 +77,8 @@ def display_page(pathname):
         return temperature_dashboard.layout
     elif pathname == '/dashboards/photoresistor':
         return photoresistor_dashboard.layout
-    # elif pathname == '/utils/dashboard-button':
-    #     return dashboard_button.layout
+    elif pathname == '/dashboards/bluetooth':
+        return bluetooth.layout
     else:
         return '404'
 
