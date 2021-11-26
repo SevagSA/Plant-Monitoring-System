@@ -1,10 +1,9 @@
-
 import bluetooth
 import bluetooth._bluetooth as bt
 import struct
 import array
 import fcntl
-
+import os
 
 class BluetoothRSSI(object):
     """Object class for getting the RSSI value of a Bluetooth address."""
@@ -58,8 +57,8 @@ class BluetoothRSSI(object):
             rssi = bt.hci_send_req(
                 self.hci_sock, bt.OGF_STATUS_PARAM,
                 bt.OCF_READ_RSSI, bt.EVT_CMD_COMPLETE, 4, self.cmd_pkt)
-            rssi = struct.unpack('b', rssi[3].to_bytes(1, 'big'))
-            return rssi
+            rssi = struct.unpack('b', rssi[3].to_bytes(1, 'big'))            
+            return rssi[0]
         except IOError:
             # Happens if connection fails (e.g. device is not in range)
             self.connected = False
@@ -70,20 +69,28 @@ class BluetoothRSSI(object):
         
 def get_number_devices():
     devices = bluetooth.discover_devices(duration=1, lookup_names = True)
+    print(len(devices))
     return len(devices)
 
 def get_device_information():
+    """   if not threshold:
+        threshold = -100
     devices = bluetooth.discover_devices(duration=1, lookup_names = True)
-    list = []
+    bluetooth_list = []
+    bluetooth_list.append("Device number : " + (str(len(devices))))
     for addr, name in devices:
-        device_information = " Device address : {}, Device name : {}".format(addr,name)
-        list.append(device_information)
-    
-    information = '\r\n'.join(list)
-    return(information)
-    
+        device = BluetoothRSSI(addr)
+        rssi = device.request_rssi()
+        if rssi > threshold:
+            device_information = "Device address : {}, Device name : {}, RSSI : {} ".format(addr,name,rssi)
+            bluetooth_list.append(device_information)
+    information = '\r\n'.join(bluetooth_list)
+    print(information)
+    return information"""
+    #devices = os.system('cmd /k "/usr/bin/node ../bluetoothTest.js"')
+    devices = os.system('sudo /usr/bin/node ../bluetoothTest.js')
+    print(type(devices))
 
-get_device_information()
 # for addr, name in devices:
 #     print(addr)
 #     print(name)
@@ -91,3 +98,4 @@ get_device_information()
 #     print (device)
 #     print(device.request_rssi())
  
+get_device_information()

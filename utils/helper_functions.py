@@ -26,8 +26,5 @@ def led_on():
 def get_light():
    return 600
 
-def get_devices():
-    return get_number_devices()
-
-def get_information():
-    return get_device_information()
+def get_information(threshold):
+    return get_device_information(threshold)

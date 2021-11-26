@@ -72,7 +72,7 @@ def run():
 
 unauth_layout = html.P("You're not authenticated. Please scan your rfid tag to authenticate")
 
-run()
+# run()
 
 auth_layout = html.Div([
             html.H3(
