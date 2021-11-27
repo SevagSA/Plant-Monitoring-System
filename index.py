@@ -5,9 +5,21 @@ import dash_bootstrap_components as dbc
 from app import app
 from apps import home_page
 
+from database import Database
+
 from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard, bluetooth
 #import utils.sending_receiving_email
 # from apps.utils import dashboard_button
+
+
+###########PSEUDOCODE START###########
+#rfid_tag = get_current_rfid_id()
+###########PSEUDOCODE END#############
+
+
+user_name = "User" #Default display
+if (rfid_tag is not None):
+	user_name = Database.get_name(rfid_tag);
 
 CONTENT_STYLE = {
     "margin-left": "18rem",
@@ -45,7 +57,7 @@ SIDEBAR_STYLE = {
 
 sidebar = html.Div(
     [
-        html.H4("Welcome User", className="display-6"),
+        html.H4(f"Welcome {user_name}", className="display-6"),
         html.Hr(),
         html.P("Plant Monitoring System", className="lead"),
         dbc.Nav(
