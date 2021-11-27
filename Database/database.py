@@ -89,7 +89,7 @@ class Database:
         
         return favorite_temperature
     
-    def get_favorite_light_intensity():
+    def get_favorite_light_intensity(rfid_tag):
         import sqlite3
 
         #Connect to database
