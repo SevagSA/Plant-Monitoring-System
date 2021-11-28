@@ -4,98 +4,26 @@ import struct
 import array
 import fcntl
 import os
-
-class BluetoothRSSI(object):
-    """Object class for getting the RSSI value of a Bluetooth address."""
-
-    def __init__(self, addr):
-        self.addr = addr
-        self.hci_sock = bt.hci_open_dev()
-        self.hci_fd = self.hci_sock.fileno()
-        self.bt_sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
-        self.bt_sock.settimeout(10)
-        self.closed = False
-        self.connected = False
-        self.cmd_pkt = None
-
-    def prep_cmd_pkt(self):
-        """Prepare the command packet for requesting RSSI."""
-        reqstr = struct.pack(
-            b'6sB17s', bt.str2ba(self.addr), bt.ACL_LINK, b'\0' * 17)
-        request = array.array('b', reqstr)
-        handle = fcntl.ioctl(self.hci_fd, bt.HCIGETCONNINFO, request, 1)
-        handle = struct.unpack(b'8xH14x', request.tobytes())[0]
-        self.cmd_pkt = struct.pack('H', handle)
-
-    def connect(self):
-        """Connect to the Bluetooth device."""
-        # Connecting via PSM 1 - Service Discovery
-        self.bt_sock.connect_ex((self.addr, 1))
-        self.connected = True
-    
-    def close(self):
-        """Close the bluetooth socket."""
-        self.bt_sock.close()
-        self.hci_sock.close()
-        self.closed = True
-
-    def request_rssi(self):
-        """Request the current RSSI value.
-        @return: The RSSI value or None if the device connection fails
-                 (i.e. the device is not in range).
-        """
-        try:
-            # If socket is closed, return nothing
-            if self.closed:
-                return None
-            # Only do connection if not already connected
-            if not self.connected:
-                self.connect()
-            # Command packet prepared each iteration to allow disconnect to trigger IOError
-            self.prep_cmd_pkt()
-            # Send command to request RSSI
-            rssi = bt.hci_send_req(
-                self.hci_sock, bt.OGF_STATUS_PARAM,
-                bt.OCF_READ_RSSI, bt.EVT_CMD_COMPLETE, 4, self.cmd_pkt)
-            rssi = struct.unpack('b', rssi[3].to_bytes(1, 'big'))            
-            return rssi[0]
-        except IOError:
-            # Happens if connection fails (e.g. device is not in range)
-            self.connected = False
-            # Socket recreated to allow device to successfully reconnect
-            self.bt_sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
-            return None
-        
-        
-def get_number_devices():
-    devices = bluetooth.discover_devices(duration=1, lookup_names = True)
-    print(len(devices))
-    return len(devices)
+import json
+import re
 
 def get_device_information():
-    """   if not threshold:
-        threshold = -100
-    devices = bluetooth.discover_devices(duration=1, lookup_names = True)
-    bluetooth_list = []
-    bluetooth_list.append("Device number : " + (str(len(devices))))
-    for addr, name in devices:
-        device = BluetoothRSSI(addr)
-        rssi = device.request_rssi()
-        if rssi > threshold:
-            device_information = "Device address : {}, Device name : {}, RSSI : {} ".format(addr,name,rssi)
-            bluetooth_list.append(device_information)
-    information = '\r\n'.join(bluetooth_list)
-    print(information)
-    return information"""
-    #devices = os.system('cmd /k "/usr/bin/node ../bluetoothTest.js"')
-    devices = os.system('sudo /usr/bin/node ../bluetoothTest.js')
-    print(type(devices))
-
-# for addr, name in devices:
-#     print(addr)
-#     print(name)
-#     device = BluetoothRSSI(addr)
-#     print (device)
-#     print(device.request_rssi())
- 
-get_device_information()
+    devices = os.system('sudo /usr/bin/node ../bluetoothTest.js > output.txt')
+    deviceList = []
+    rssiList = []
+    informationDict = {}
+    with open('output.txt',encoding='utf-8-sig', errors='ignore') as devices:
+         sp = devices.read().splitlines()
+        
+    for line in sp:
+        rssi = 0;
+        transmitterId = "";
+        if "transmitterId:" in line:
+            transmitterId = line.split("'")[1::2]
+            deviceList.append(transmitterId)
+        if "rssi:" in line:
+            rssi = int(re.search(r'\d+', line).group(0))
+            rssiList.append(rssi)
+    for i in range(len(deviceList)):
+        informationDict[deviceList[i][0]] = rssiList[i]
+    return(informationDict)
