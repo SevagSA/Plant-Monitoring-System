@@ -2,7 +2,7 @@ from .dc_motor import motor_on
 from .DHT import get_temp, get_humid
 from .sending_receiving_email import execute_email_service
 from .sending_email import email_send
-from .bt_rssi import get_number_devices, get_device_information
+from .bt_rssi import get_device_information
 
 
 def get_temperature():

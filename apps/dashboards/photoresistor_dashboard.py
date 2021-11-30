@@ -15,7 +15,7 @@ time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
 light_list = []
 values = []
 
-threshold_value = 1500
+threshold_value = 1500 #database value
 
 
 broker = 'broker.emqx.io'
@@ -62,7 +62,7 @@ def update_output(n_clicks, input_value):
         
         print(input_value)
         global threshold_value
-        threshold_value = input_value
+        threshold_value = input_value # set in database
         print("Modified thresholdValue : " + str(threshold_value))
         if n_clicks is not None:
             return u'''

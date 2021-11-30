@@ -8,7 +8,7 @@ from utils.helper_functions import get_temperature, send_email
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
-threshold_value = 24
+threshold_value = 24 #database value
 
 layout = html.Div([
     html.H3('Temperature Dashboard',
@@ -40,7 +40,7 @@ layout = html.Div([
 @app.callback(Output('temperature-threshold-text', 'children'),[Input('submit-temperature-threshold', 'n_clicks')],[State('temperature-threshold', 'value')],)
 def update_output(n_clicks, input_value):
         global threshold_value
-        threshold_value = input_value
+        threshold_value = input_value # set in database
         print("Modified thresholdValue : " + str(threshold_value))
         if n_clicks is not None:
             return u'''
