@@ -1,3 +1,4 @@
+import constants
 import random
 import dash_bootstrap_components as dbc
 
@@ -15,7 +16,7 @@ time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
 light_list = []
 values = []
 
-threshold_value = 1500 #database value
+threshold_value = 1500  # database value
 
 
 broker = 'broker.emqx.io'
@@ -33,21 +34,20 @@ layout = html.Div([
                 'color': 'white',
                 'padding': '10px',
                 'margin-bottom': '20px',
-                'background-color': '#000080'
+                'background-color': constants.THIRD_COLOR
             }),
     dcc.Graph(
         id='photoresistor-graph',
         figure={}
     ),
     html.Div([
-        dcc.Link('Go to Home Page', href='/'),
         html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
             dcc.Input(id='light-threshold', type='number'),
             dbc.Button("Submit Threshold", id='submit-light-threshold', n_clicks=0, type='submit',
-                       style={'background-color': '#000080', 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
+                       style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='light-threshold-text',
-                   children='Please enter a photoresistor threshold.'),
+                   children='Please enter a photoresistor threshold.', style={"color": constants.TEXT_COLOR}),
         ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center', 'align-items': 'center', 'padding': '10px'}),
         dbc.Button("Get Light", id='get-light-btn', n_clicks=0,
                    style={'background-color': 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
@@ -59,10 +59,10 @@ layout = html.Div([
 @ app.callback(Output('light-threshold-text', 'children'), [Input('submit-light-threshold', 'n_clicks')], [State('light-threshold', 'value')],)
 def update_output(n_clicks, input_value):
     if input_value:
-        
+
         print(input_value)
         global threshold_value
-        threshold_value = input_value # set in database
+        threshold_value = input_value  # set in database
         print("Modified thresholdValue : " + str(threshold_value))
         if n_clicks is not None:
             return u'''
@@ -87,10 +87,16 @@ def run_script_onClick(n_clicks, value):
         'layout': {
             'title': 'Plant average light per hour',
             'xaxis': {
-                'title': 'Time of day'
+                'title': 'Time of day',
+                'marker': {"color": constants.THIRD_COLOR}
             },
             'yaxis': {
                 'title': 'Temperature'
+            },
+            'plot_bgcolor': constants.PRIMARY_COLOR,
+            'paper_bgcolor': constants.PRIMARY_COLOR,
+            'font': {
+                'color': constants.TEXT_COLOR
             }
         },
     }
@@ -110,11 +116,10 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
-
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
         values.append(int(msg.payload.decode()))
-        
+
         if len(values) == 1:
             light_list.append(values[0])
             print("This is the value : " + str(threshold_value))
@@ -130,5 +135,5 @@ def subscribe(client: mqtt_client):
 
 def run():
     client = connect_mqtt()
-    #subscribe(client)
+    # subscribe(client)
     client.loop_start()

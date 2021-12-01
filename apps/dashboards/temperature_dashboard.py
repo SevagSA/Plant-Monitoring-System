@@ -1,14 +1,17 @@
+from dash.html.Div import Div
+import constants
 from dash import dcc, html
-from dash.dependencies import Input, Output,State
+from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 
 from app import app
 
 from utils.helper_functions import get_temperature, send_email
 
-time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+               13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
-threshold_value = 24 #database value
+threshold_value = 24  # database value
 
 layout = html.Div([
     html.H3('Temperature Dashboard',
@@ -17,36 +20,38 @@ layout = html.Div([
                 'color': 'white',
                 'padding': '10px',
                 'margin-bottom': '20px',
-                'background-color' : '#000080'
+                'background-color': constants.THIRD_COLOR
             }),
     dcc.Graph(
         id='temperature-graph',
         figure={}
     ),
     html.Div([
-        dcc.Link('Go to Home Page', href='/'),
         html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
             dcc.Input(id='temperature-threshold', type='number'),
             dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0,
-                style={'background-color' : '#000080', 'border': 'none', 'height': '45px', 'margin':'10px 0px'}, className="me-1"),
-            html.P(id='temperature-threshold-text', children='Please enter a photoresistor threshold.'),
-        ], style={'display':'flex', 'flex-direction' : 'column', 'align-items':'center', 'align-items': 'center', 'padding':'10px'}),
-            dbc.Button("Get Temperature", id='get-temp-btn', n_clicks=0,
-                style={'background-color' : 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
-    ], style={'display': 'flex', 'justify-content': 'space-between', 'align-items':'center'})
+                       style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
+            html.P(id='temperature-threshold-text',
+                   children='Please enter a photoresistor threshold.', style={"color": "white"}),
+        ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center', 'align-items': 'center', 'padding': '10px'}),
+        dbc.Button("Get Temperature", id='get-temp-btn', n_clicks=0,
+                   style={'background-color': 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
+    ], style={'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'})
 ])
 
-@app.callback(Output('temperature-threshold-text', 'children'),[Input('submit-temperature-threshold', 'n_clicks')],[State('temperature-threshold', 'value')],)
+
+@app.callback(Output('temperature-threshold-text', 'children'), [Input('submit-temperature-threshold', 'n_clicks')], [State('temperature-threshold', 'value')],)
 def update_output(n_clicks, input_value):
-        global threshold_value
-        threshold_value = input_value # set in database
-        print("Modified thresholdValue : " + str(threshold_value))
-        if n_clicks is not None:
-            return u'''
+    global threshold_value
+    threshold_value = input_value  # set in database
+    print("Modified thresholdValue : " + str(threshold_value))
+    if n_clicks is not None:
+        return u'''
         The current threshold is {}.
     '''.format(input_value)
-    
+
+
 @app.callback(
     Output('temperature-graph', 'figure'),
     [Input('get-temp-btn', 'n_clicks')])
@@ -60,20 +65,27 @@ def run_script_onClick(n_clicks):
         print(current_temperature)
         print("It is higher")
         send_email()
-        
+
     temperature_list.append(current_temperature)
     print(current_temperature, "here")
     return {
-            'data': [
-                {'x': time_of_day, 'y': temperature_list, 'type': 'line', 'name': 'Humidity'},
-            ],
-            'layout': {
-                'title': 'Plant average temperature per hour',
-                'xaxis': {
-                    'title': 'Time of day'
-                },
-                'yaxis': {
-                    'title': 'Temperature'
-                }
+        'data': [
+            {'x': time_of_day, 'y': temperature_list,
+             'type': 'line', 'name': 'Humidity'},
+        ],
+        'layout': {
+            'title': 'Plant average temperature per hour',
+            'xaxis': {
+                'title': 'Time of day',
+                'marker': {"color": constants.THIRD_COLOR}
             },
-        }
+            'yaxis': {
+                'title': 'Temperature'
+            },
+            'plot_bgcolor': constants.PRIMARY_COLOR,
+            'paper_bgcolor': constants.PRIMARY_COLOR,
+            'font': {
+                'color': constants.TEXT_COLOR
+            }
+        },
+    }

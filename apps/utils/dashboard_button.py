@@ -15,8 +15,8 @@ layout = html.Div([
     html.Button('Submit', id='submit-val', n_clicks=0),
     html.Div(id='container-button-basic',
              children='Enter a value and press submit'),
-    dcc.Link('Go to Home Page', href='/')
 ])
+
 
 @app.callback(
     Output('container-button-basic', 'children'),

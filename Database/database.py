@@ -1,173 +1,173 @@
-class Database:
-    def __init__(self):
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: '__init__(self)')\n")
+# class Database:
+#     def __init__(self):
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: '__init__(self)')\n")
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
 
-        many_users = [
-        ('124103131100', 'Ali', 18, 200),
-        ('53125461236', 'Sebastian', 20, 400),
-        ('31126391236', 'Nicolas', 15, 100),
-        ('131504313', 'Sevag', 24, 500)
-        ]
-        c.executemany("INSERT INTO users VALUES (?,?,?,?)", many_users[0]) #Comment line
-        c.execute("INSERT INTO users VALUES ('98765432182', 'Samad', 22, 800)") #Comment line
+#         many_users = [
+#         ('124103131100', 'Ali', 18, 200),
+#         ('53125461236', 'Sebastian', 20, 400),
+#         ('31126391236', 'Nicolas', 15, 100),
+#         ('131504313', 'Sevag', 24, 500)
+#         ]
+#         c.executemany("INSERT INTO users VALUES (?,?,?,?)", many_users[0]) #Comment line
+#         c.execute("INSERT INTO users VALUES ('98765432182', 'Samad', 22, 800)") #Comment line
 
-        c.execute("SELECT * FROM users")
+#         c.execute("SELECT * FROM users")
 
 
-        print("Tables created successfully!")
+#         print("Tables created successfully!")
 
-        #Commit the command
-        conn.commit()
+#         #Commit the command
+#         conn.commit()
 
-        #Close the connection
-        conn.close()
-    
-    def getAllUsers():
-        import sqlite3
-        
-        #Connect to database
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: 'getAllUsers()')\n")
+#         #Close the connection
+#         conn.close()
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#     def getAllUsers():
+#         import sqlite3
 
-        #many_users = [
-        #('12341251512', 'Ali', 18, 200),
-        #('53125461236', 'Sebastian', 20, 400),
-        #('31126391236', 'Nicolas', 15, 100),
-        #('17342542182', 'Sevag', 24, 500)
-        #]
-        #c.executemany("INSERT INTO users VALUES (?,?,?,?)", many_users[0]) #Comment line
-        #c.execute("INSERT INTO users VALUES ('98765432182', 'Samad', 22, 800)") #Comment line
+#         #Connect to database
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: 'getAllUsers()')\n")
 
-        c.execute("SELECT * FROM users")
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
 
-        #print(c.fetchone())
-        #print(c.fetchAll())
-        #print(c.fetchmany(3))
+#         #many_users = [
+#         #('12341251512', 'Ali', 18, 200),
+#         #('53125461236', 'Sebastian', 20, 400),
+#         #('31126391236', 'Nicolas', 15, 100),
+#         #('17342542182', 'Sevag', 24, 500)
+#         #]
+#         #c.executemany("INSERT INTO users VALUES (?,?,?,?)", many_users[0]) #Comment line
+#         #c.execute("INSERT INTO users VALUES ('98765432182', 'Samad', 22, 800)") #Comment line
 
-        users = c.fetchall()
-        print("ALL USERS IN DATABASE:")
-        print(users)
-        print("All users fetched successfully!\n")
+#         c.execute("SELECT * FROM users")
 
-        print("ALL NAMES OF USERS IN DATABASE:")
-        for row in users:
-            print(row[1])
-        print("All users iteratively fetched successfully!\n")
+#         #print(c.fetchone())
+#         #print(c.fetchAll())
+#         #print(c.fetchmany(3))
 
-        print("Command(s) executed successfully!")
+#         users = c.fetchall()
+#         print("ALL USERS IN DATABASE:")
+#         print(users)
+#         print("All users fetched successfully!\n")
 
-        #Commit the command
-        conn.commit()
+#         print("ALL NAMES OF USERS IN DATABASE:")
+#         for row in users:
+#             print(row[1])
+#         print("All users iteratively fetched successfully!\n")
 
-        #Close the connection
-        conn.close()
-    
-    
-    def get_name(rfid_tag):
-        import sqlite3
+#         print("Command(s) executed successfully!")
 
-        #Connect to database
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: 'get_name(rfid_tag)')\n")
+#         #Commit the command
+#         conn.commit()
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#         #Close the connection
+#         conn.close()
 
-        c.execute(f"SELECT name FROM users WHERE user_id LIKE {rfid_tag}")
 
-        user_name = c.fetchone()
+#     def get_name(rfid_tag):
+#         import sqlite3
 
-        #Commit the command
-        conn.commit()
+#         #Connect to database
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: 'get_name(rfid_tag)')\n")
 
-        #Close the connection
-        conn.close()
-        
-        return user_name
-        
-    def get_favorite_temperature(rfid_tag):
-        import sqlite3
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
 
-        #Connect to database
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: 'get_favorite_temperature(rfid_tag)')\n")
+#         c.execute(f"SELECT name FROM users WHERE user_id LIKE {rfid_tag}")
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#         user_name = c.fetchone()
 
-        c.execute("SELECT favorite_temperature FROM users WHERE user_id LIKE {rfid_tag}")
+#         #Commit the command
+#         conn.commit()
 
-        favorite_temperature = c.fetchone()
+#         #Close the connection
+#         conn.close()
 
-        #Commit the command
-        conn.commit()
+#         return user_name
 
-        #Close the connection
-        conn.close()
-        
-        return favorite_temperature
-    
-    def set_favorite_temperature(rfid_tag, updated_temp):
-        import sqlite3
+#     def get_favorite_temperature(rfid_tag):
+#         import sqlite3
 
-        #Connect to database
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: 'set_favorite_temperature(rfid_tag, update_temp)')\n")
+#         #Connect to database
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: 'get_favorite_temperature(rfid_tag)')\n")
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
 
-        c.execute(f"UPDATE users SET favorite_temperature = {updated_temp} WHERE user_id LIKE {rfid_tag}")
+#         c.execute("SELECT favorite_temperature FROM users WHERE user_id LIKE {rfid_tag}")
 
-        #Commit the command
-        conn.commit()
+#         favorite_temperature = c.fetchone()
 
-        #Close the connection
-        conn.close()
-    
-    def get_favorite_light_intensity(rfid_tag):
-        import sqlite3
+#         #Commit the command
+#         conn.commit()
 
-        #Connect to database
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: 'get_favorite_light_intensity(rfid_tag)')\n")
+#         #Close the connection
+#         conn.close()
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#         return favorite_temperature
 
-        c.execute("SELECT favorite_light_intensity FROM users WHERE user_id LIKE {rfid_tag}")
+#     def set_favorite_temperature(rfid_tag, updated_temp):
+#         import sqlite3
 
-        favorite_light_intensity = c.fetchone()
+#         #Connect to database
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: 'set_favorite_temperature(rfid_tag, update_temp)')\n")
 
-        #Commit the command
-        conn.commit()
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
 
-        #Close the connection
-        conn.close()
-        
-        return favorite_light_intensity
-    
-    def set_favorite_light_intensity(rfid_tag, updated_light_intensity):
-        import sqlite3
+#         c.execute(f"UPDATE users SET favorite_temperature = {updated_temp} WHERE user_id LIKE {rfid_tag}")
 
-        #Connect to database
-        conn = sqlite3.connect('userSettings.db')
-        print("Connection to database 'userSettings.db' established successfully! (Source: 'set_favorite_light_intensity(rfid_tag, updated_light_intensity)')\n")
+#         #Commit the command
+#         conn.commit()
 
-        #Create a cursor
-        c = conn.cursor() #'c' is cursor
+#         #Close the connection
+#         conn.close()
 
-        c.execute(f"UPDATE users SET favorite_light_intensity = {updated_light_intensity} WHERE user_id LIKE {rfid_tag}")
+#     def get_favorite_light_intensity(rfid_tag):
+#         import sqlite3
 
-        #Commit the command
-        conn.commit()
+#         #Connect to database
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: 'get_favorite_light_intensity(rfid_tag)')\n")
 
-        #Close the connection
-        conn.close()
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
+
+#         c.execute("SELECT favorite_light_intensity FROM users WHERE user_id LIKE {rfid_tag}")
+
+#         favorite_light_intensity = c.fetchone()
+
+#         #Commit the command
+#         conn.commit()
+
+#         #Close the connection
+#         conn.close()
+
+#         return favorite_light_intensity
+
+#     def set_favorite_light_intensity(rfid_tag, updated_light_intensity):
+#         import sqlite3
+
+#         #Connect to database
+#         conn = sqlite3.connect('userSettings.db')
+#         print("Connection to database 'userSettings.db' established successfully! (Source: 'set_favorite_light_intensity(rfid_tag, updated_light_intensity)')\n")
+
+#         #Create a cursor
+#         c = conn.cursor() #'c' is cursor
+
+#         c.execute(f"UPDATE users SET favorite_light_intensity = {updated_light_intensity} WHERE user_id LIKE {rfid_tag}")
+
+#         #Commit the command
+#         conn.commit()
+
+#         #Close the connection
+#         conn.close()

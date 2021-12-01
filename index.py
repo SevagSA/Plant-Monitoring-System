@@ -1,3 +1,4 @@
+import constants
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
@@ -5,21 +6,21 @@ import dash_bootstrap_components as dbc
 from app import app
 from apps import home_page
 
-from Database.database import Database
+# from Database.database import Database
 
 from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard, bluetooth
-#import utils.sending_receiving_email
+# import utils.sending_receiving_email
 # from apps.utils import dashboard_button
 
 
 ###########PSEUDOCODE START###########
-#rfid_tag = get_current_rfid_id()
+# rfid_tag = get_current_rfid_id()
 rfid_tag = 123412
 ###########PSEUDOCODE END#############
 
-user_name = "User" #Default display
-if (rfid_tag is not None):
-	user_name = Database.get_name(rfid_tag)
+user_name = "User"  # Default display
+# if rfid_tag is not None:
+# 	user_name=Database.get_name(rfid_tag)
 
 CONTENT_STYLE = {
     "margin-left": "18rem",
@@ -27,21 +28,7 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 
-content = html.Div([
-    html.Div(id='page-content'),
-    html.P(
-        children='Plant Monitoring System',
-        style={
-            'display':'flex',
-            'justify-content':'center',
-            'align-items': 'center',
-            'height': '20vh',
-            'margin-top':'2.4%',
-            'textAlign': 'center',
-            'color': 'white',
-            'background-color' : '#000080'
-        })
-], style=CONTENT_STYLE)
+content = html.Div([html.Div(id='page-content'), ], style=CONTENT_STYLE)
 
 SIDEBAR_STYLE = {
     "position": "fixed",
@@ -51,22 +38,42 @@ SIDEBAR_STYLE = {
     "width": "16rem",
     "padding": "2rem 1rem",
     "color": "white",
-    "background-color": "#000080",
+    "background-color": "#171C1E",
 }
 
 
 sidebar = html.Div(
     [
-        html.H4(f"Welcome {user_name}", className="display-6"),
+        html.Div([
+            html.Img(
+                src="https://i.ibb.co/cc9mPXb/b.png",
+                style={
+                    'max-width': '50%',
+                    'height': "70px",
+                    'display': 'block',
+                    'margin-left': 'auto',
+                    'margin-right': 'auto'
+                },
+                className="lead"
+            ),
+            html.H4(f"Welcome {user_name}", className="display-6", style={"font-size": 20})],
+            style={
+                "display": "flex",
+                "align-items": "center",
+        }
+        ),
         html.Hr(),
-        html.P("Plant Monitoring System", className="lead"),
         dbc.Nav(
             [
                 dbc.NavLink("Home", href="/", active="exact"),
-                dbc.NavLink("Temperature Dashboard", href='/dashboards/temperature', active="exact"),
-                dbc.NavLink("Humidity Dashboard", href='/dashboards/humidity', active="exact"),
-                dbc.NavLink("Photoresistor", href='/dashboards/photoresistor', active="exact"),
-                dbc.NavLink("Bluetooth", href='/dashboards/bluetooth', active="exact"),
+                dbc.NavLink("Temperature Dashboard",
+                            href='/dashboards/temperature', active="exact"),
+                dbc.NavLink("Humidity Dashboard",
+                            href='/dashboards/humidity', active="exact"),
+                dbc.NavLink("Photoresistor",
+                            href='/dashboards/photoresistor', active="exact"),
+                dbc.NavLink(
+                    "Bluetooth", href='/dashboards/bluetooth', active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -76,10 +83,12 @@ sidebar = html.Div(
 )
 
 
-app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
+app.layout = html.Div([dcc.Location(id="url"), sidebar, content], style={
+                      "background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
 
-@app.callback(Output('page-content', 'children'),
-              Input('url', 'pathname'))
+
+@ app.callback(Output('page-content', 'children'),
+               Input('url', 'pathname'))
 def display_page(pathname):
     if pathname == '/':
         return home_page.layout
@@ -93,6 +102,7 @@ def display_page(pathname):
         return bluetooth.layout
     else:
         return '404'
+
 
 if __name__ == '__main__':
     app.run_server(debug=False)
