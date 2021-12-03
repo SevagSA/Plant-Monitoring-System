@@ -1,4 +1,4 @@
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import random
 
 from dash.html.Button import Button
@@ -17,9 +17,9 @@ import dash_daq as daq
 
 # For LED
 pin = 40
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setwarnings(False)
-# GPIO.setup(pin, GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
 
 broker = 'broker.emqx.io'
 port = 1883
@@ -59,7 +59,7 @@ def subscribe(client: mqtt_client):
         rfid_tag = msg.payload.decode()
         break_while = False
         if not rfid_tag in valid_rfid_tags:
-            print("is not a valid tag")
+            print("isa valid tag")
             is_authenticated = False
         else:
             is_authenticated = True
@@ -186,14 +186,19 @@ auth_layout = html.Div([
                 html.Div(id="led-btn-holder", children=[
                     html.H3("Toggle LED", style={
                             "color": constants.TEXT_COLOR, "margin-bottom": "20px"}),
-                    html.Button("Open LED", id="submit-val", style={
+                    
+                    html.Button("Open LED", id='', n_clicks=0, style={
                         "width": "100%",
                         "border": "none",
                         "height": "40px",
                         "background": constants.SECONDARY_COLOR,
                         "color": constants.TEXT_COLOR,
                         "font-size": "20px"
-                    })
+                    }),
+                    
+                            
+                
+                    
                 ], style={"margin-bottom": "60px"}),
                  table,
                  html.Div([
@@ -225,16 +230,17 @@ layout = html.Div(children=[
 
 @app.callback(
     Output('led-status', 'children'),
-    Input('submit-val', 'n_clicks'),
+    Input('led-btn', 'n_clicks'),
     State('input-on-submit', 'value'))
 def update_output(n_clicks, value):
+    print("here")
     if (n_clicks % 2 == 1):
         print("ON")
-        # GPIO.output(pin, True)
+        GPIO.output(pin, True)
         return "Currently the LED is On"
     else:
         print("OFF")
-        # GPIO.output(pin, False)
+        GPIO.output(pin, False)
         return "Currently the LED is Off"
 
 
