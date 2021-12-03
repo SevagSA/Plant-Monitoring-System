@@ -1,13 +1,12 @@
 from .dc_motor import motor_on
-# from .DHT import get_temp, get_humid
+from .DHT import get_temp, get_humid
 from .sending_receiving_email import execute_email_service
 from .sending_email import email_send
 from .bt_rssi import get_device_information
 
 
 def get_temperature():
-    # return get_temp()
-    return 1
+    return get_temp()
 
 
 def send_email():
@@ -15,13 +14,11 @@ def send_email():
 
 
 def get_humidity():
-    #  return get_humid()
-    return 1
+    return get_humid()
 
 
 def dc_motor_on():
-    # motor_on()
-    return 1
+    motor_on()
 
 
 def led_on():

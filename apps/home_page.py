@@ -81,7 +81,7 @@ def run():
 unauth_layout = html.P(
     "You're not authenticated. Please scan your rfid tag to authenticate")
 
-# run()
+run()
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = [5, 3, 4, 6, 6, 4, 6, 7, 5, 6]
