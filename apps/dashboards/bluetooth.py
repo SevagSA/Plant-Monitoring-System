@@ -1,4 +1,4 @@
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 import constants
 from dash import Dash, dcc, html, Input, Output, State
@@ -9,10 +9,10 @@ from utils.helper_functions import get_information
 from app import app
 pin = 32
 
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setwarnings(False)
-# GPIO.setup(pin, GPIO.OUT)
-# GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 
 threshold_value = -100

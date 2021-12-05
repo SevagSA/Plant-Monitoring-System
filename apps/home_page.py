@@ -1,4 +1,4 @@
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import random
 
 from dash.html.Button import Button
@@ -19,9 +19,9 @@ from rfid_config import set_auth_user, get_auth_user
 
 # For LED
 pin = 40
-# GPIO.setmode(GPIO.BOARD)
-# GPIO.setwarnings(False)
-# GPIO.setup(pin, GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
 
 broker = 'broker.emqx.io'
 port = 1883
