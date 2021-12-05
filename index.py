@@ -56,7 +56,7 @@ sidebar = html.Div(
                 },
                 className="lead"
             ),
-            html.H4(f"Welcome {user_name}", className="display-6", style={"font-size": 20})],
+            html.H4("Sage System", className="display-6", style={"font-size": 20})],
             style={
                 "display": "flex",
                 "align-items": "center",

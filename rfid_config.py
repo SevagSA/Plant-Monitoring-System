@@ -35,8 +35,7 @@ def get_auth_user():
 
 
 def set_auth_user(rfid_tag):
-    cur.execute(
-        f'UPDATE authenticated_user SET user_tag = {rfid_tag}')
+    cur.execute(f'UPDATE authenticated_user SET user_tag = {rfid_tag}')
     con.commit()
 
 

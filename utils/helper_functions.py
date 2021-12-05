@@ -1,28 +1,33 @@
 from .dc_motor import motor_on
-from .DHT import get_temp, get_humid
+# from .DHT import get_temp, get_humid
 from .sending_receiving_email import execute_email_service
 from .sending_email import email_send
 from .bt_rssi import get_device_information
 
 
 def get_temperature():
-    return get_temp()
+    return 12
+    # return get_temp()
 
 
 def send_email():
-    return execute_email_service()
+    pass
+    # return execute_email_service()
 
 
 def get_humidity():
-    return get_humid()
+    pass
+    # return get_humid()
 
 
 def dc_motor_on():
-    motor_on()
+    pass
+    # motor_on()
 
 
 def led_on():
-    email_send()
+    pass
+    # email_send()
 
 
 def get_light():
@@ -30,4 +35,5 @@ def get_light():
 
 
 def get_information(threshold):
-    return get_device_information(threshold)
+    pass
+    # return get_device_information(threshold)
