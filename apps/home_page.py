@@ -11,9 +11,11 @@ from app import app
 from dash.dependencies import Input, Output
 from paho.mqtt import client as mqtt_client
 from dash import dcc, html, Input, Output, State
-from utils.helper_functions import get_humidity, get_temperature, dc_motor_on, get_light
+from utils.helper_functions import get_humidity, get_temperature, dc_motor_on, get_light, send_email
 
 import dash_daq as daq
+
+from rfid_config import set_auth_user, get_auth_user
 
 # For LED
 pin = 40
@@ -57,16 +59,16 @@ def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
         global is_authenticated
         rfid_tag = msg.payload.decode()
-        break_while = False
         if not rfid_tag in valid_rfid_tags:
-            print("isa valid tag")
+            print("not valid tag")
             is_authenticated = False
         else:
             is_authenticated = True
+            set_auth_user(rfid_tag)
+            send_email()
             print("this is a valid tag")
 
         print(str(is_authenticated) + " here")
-        # dash.callback_context.response.set_cookie('rfid_tag', rfid_tag)
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
 
     client.subscribe(topic)

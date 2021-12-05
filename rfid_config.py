@@ -17,12 +17,6 @@ def get_photoresistor_threshold(rfid_tag):
     return cur.fetchone()[0]
 
 
-print(get_temp_threshold("131504313"))
-print(get_temp_threshold("124103131100"))
-print(get_photoresistor_threshold("131504313"))
-print(get_photoresistor_threshold("124103131100"))
-
-
 def set_temp_threshold(rfid_tag, threshold):
     cur.execute(
         f'UPDATE preference_dict SET temperature_threshold = {threshold} WHERE tag="{rfid_tag}"')
@@ -35,17 +29,15 @@ def set_photoresistor_threshold(rfid_tag, threshold):
     con.commit()
 
 
-# TODO you can delete this. This is just a working example
-# set_temp_threshold("131504313", 22)
-# set_temp_threshold("124103131100", 25)
-# set_photoresistor_threshold("131504313", 600)
-# set_photoresistor_threshold("124103131100", 540)
+def get_auth_user():
+    cur.execute('SELECT user_tag FROM authenticated_user')
+    return cur.fetchone()[0]
 
 
-print(get_temp_threshold("131504313"))
-print(get_temp_threshold("124103131100"))
-print(get_photoresistor_threshold("131504313"))
-print(get_photoresistor_threshold("124103131100"))
+def set_auth_user(rfid_tag):
+    cur.execute(
+        f'UPDATE authenticated_user SET user_tag = {rfid_tag}')
+    con.commit()
 
 
 con.close()
