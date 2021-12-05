@@ -1,0 +1,1705 @@
+HciPacket {
+  type: 'readAddressCommand',
+  address: 'dca6329517fe',
+  origin: 'socket',
+  time: 1638731217186 }
+Raddec {
+  transmitterId: '1df44f670308',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets: [ '42150803674ff41d02011a0bff4c0009060308c0a8001a' ],
+  earliestDecodingTime: 1638731217487,
+  creationTime: 1638731217491 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -89,
+       numberOfDecodings: 1,
+       rssiSum: -89 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731217504,
+  creationTime: 1638731217504 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731217524,
+  creationTime: 1638731217525 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -78,
+       numberOfDecodings: 1,
+       rssiSum: -78 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731217536,
+  creationTime: 1638731217537 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -75,
+       numberOfDecodings: 1,
+       rssiSum: -75 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731217557,
+  creationTime: 1638731217557 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -76,
+       numberOfDecodings: 1,
+       rssiSum: -76 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731217558,
+  creationTime: 1638731217558 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -49,
+       numberOfDecodings: 1,
+       rssiSum: -49 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731217593,
+  creationTime: 1638731217593 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -47,
+       numberOfDecodings: 1,
+       rssiSum: -47 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731217594,
+  creationTime: 1638731217594 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731217628,
+  creationTime: 1638731217629 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731217679,
+  creationTime: 1638731217680 }
+Raddec {
+  transmitterId: '4fb525b2d303',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '401703d3b225b54f02011a020a0c0aff4c001005571c498ca5' ],
+  earliestDecodingTime: 1638731217727,
+  creationTime: 1638731217728 }
+Raddec {
+  transmitterId: '4fb525b2d303',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets: [ '440603d3b225b54f' ],
+  earliestDecodingTime: 1638731217729,
+  creationTime: 1638731217729 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731217796,
+  creationTime: 1638731217797 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4406c6be63022e75' ],
+  earliestDecodingTime: 1638731217798,
+  creationTime: 1638731217798 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -69,
+       numberOfDecodings: 1,
+       rssiSum: -69 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731217843,
+  creationTime: 1638731217843 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731217870,
+  creationTime: 1638731217871 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets: [ '040611e89106de50' ],
+  earliestDecodingTime: 1638731217872,
+  creationTime: 1638731217873 }
+Raddec {
+  transmitterId: '14562b75e65a',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets:
+   [ '42255ae6752b56141eff0600010920027c4100091244e8fcab2026387930f755f720da010d4a3a' ],
+  earliestDecodingTime: 1638731217885,
+  creationTime: 1638731217886 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731217923,
+  creationTime: 1638731217923 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731217924,
+  creationTime: 1638731217924 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731217934,
+  creationTime: 1638731217934 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -79,
+       numberOfDecodings: 1,
+       rssiSum: -79 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731217939,
+  creationTime: 1638731217939 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '001775b20ac9b31c02011a020a040aff4c0010050314107842' ],
+  earliestDecodingTime: 1638731217953,
+  creationTime: 1638731217959 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '040675b20ac9b31c' ],
+  earliestDecodingTime: 1638731217959,
+  creationTime: 1638731217960 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -89,
+       numberOfDecodings: 1,
+       rssiSum: -89 } ],
+  packets: [ '401702b593535f5e02011a020a080aff4c001005641cd5d44c' ],
+  earliestDecodingTime: 1638731217960,
+  creationTime: 1638731217960 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets: [ '440602b593535f5e' ],
+  earliestDecodingTime: 1638731217961,
+  creationTime: 1638731217961 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -76,
+       numberOfDecodings: 1,
+       rssiSum: -76 } ],
+  packets: [ '4017efe302976b5202011a020a080aff4c001005611ce95f94' ],
+  earliestDecodingTime: 1638731217965,
+  creationTime: 1638731217965 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -76,
+       numberOfDecodings: 1,
+       rssiSum: -76 } ],
+  packets: [ '4406efe302976b52' ],
+  earliestDecodingTime: 1638731217966,
+  creationTime: 1638731217966 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731218092,
+  creationTime: 1638731218092 }
+Raddec {
+  transmitterId: '14562b75e65a',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -89,
+       numberOfDecodings: 1,
+       rssiSum: -89 } ],
+  packets:
+   [ '42255ae6752b56141eff0600010920027c4100091244e8fcab2026387930f755f720da010d4a3a' ],
+  earliestDecodingTime: 1638731218096,
+  creationTime: 1638731218096 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -74,
+       numberOfDecodings: 1,
+       rssiSum: -74 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731218108,
+  creationTime: 1638731218108 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731218109,
+  creationTime: 1638731218109 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -53,
+       numberOfDecodings: 1,
+       rssiSum: -53 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731218151,
+  creationTime: 1638731218151 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -53,
+       numberOfDecodings: 1,
+       rssiSum: -53 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731218151,
+  creationTime: 1638731218152 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731218158,
+  creationTime: 1638731218159 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731218189,
+  creationTime: 1638731218189 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731218232,
+  creationTime: 1638731218232 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets: [ '040611e89106de50' ],
+  earliestDecodingTime: 1638731218233,
+  creationTime: 1638731218233 }
+Raddec {
+  transmitterId: '316adb63d5b1',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '4215b1d563db6a3102011a0bff4c0009060315c0a8000e' ],
+  earliestDecodingTime: 1638731218304,
+  creationTime: 1638731218304 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731218403,
+  creationTime: 1638731218404 }
+Raddec {
+  transmitterId: '6854da8315d7',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -91,
+       numberOfDecodings: 1,
+       rssiSum: -91 } ],
+  packets: [ '4014d71583da54680201060aff4c001005411ca26ffd' ],
+  earliestDecodingTime: 1638731218404,
+  creationTime: 1638731218404 }
+Raddec {
+  transmitterId: '6854da8315d7',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -92,
+       numberOfDecodings: 1,
+       rssiSum: -92 } ],
+  packets: [ '4406d71583da5468' ],
+  earliestDecodingTime: 1638731218405,
+  creationTime: 1638731218405 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731218416,
+  creationTime: 1638731218416 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -83,
+       numberOfDecodings: 1,
+       rssiSum: -83 } ],
+  packets: [ '040611e89106de50' ],
+  earliestDecodingTime: 1638731218417,
+  creationTime: 1638731218417 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -44,
+       numberOfDecodings: 1,
+       rssiSum: -44 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731218422,
+  creationTime: 1638731218423 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -44,
+       numberOfDecodings: 1,
+       rssiSum: -44 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731218423,
+  creationTime: 1638731218423 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731218458,
+  creationTime: 1638731218459 }
+Raddec {
+  transmitterId: '316adb63d5b1',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '4215b1d563db6a3102011a0bff4c0009060315c0a8000e' ],
+  earliestDecodingTime: 1638731218489,
+  creationTime: 1638731218489 }
+Raddec {
+  transmitterId: '50323775fa1e',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -92,
+       numberOfDecodings: 1,
+       rssiSum: -92 } ],
+  packets:
+   [ '001e1efa7537325002011a020a0c11ff4c000f08c00a73920000400b10020104' ],
+  earliestDecodingTime: 1638731218513,
+  creationTime: 1638731218513 }
+Raddec {
+  transmitterId: '50323775fa1e',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -91,
+       numberOfDecodings: 1,
+       rssiSum: -91 } ],
+  packets: [ '04061efa75373250' ],
+  earliestDecodingTime: 1638731218514,
+  creationTime: 1638731218514 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets: [ '4017efe302976b5202011a020a080aff4c001005611ce95f94' ],
+  earliestDecodingTime: 1638731218519,
+  creationTime: 1638731218520 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets: [ '4406efe302976b52' ],
+  earliestDecodingTime: 1638731218520,
+  creationTime: 1638731218520 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731218621,
+  creationTime: 1638731218621 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4406c6be63022e75' ],
+  earliestDecodingTime: 1638731218621,
+  creationTime: 1638731218621 }
+Raddec {
+  transmitterId: '50323775fa1e',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets:
+   [ '001e1efa7537325002011a020a0c11ff4c000f08c00a73920000400b10020104' ],
+  earliestDecodingTime: 1638731218699,
+  creationTime: 1638731218699 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -49,
+       numberOfDecodings: 1,
+       rssiSum: -49 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731218702,
+  creationTime: 1638731218703 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -51,
+       numberOfDecodings: 1,
+       rssiSum: -51 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731218704,
+  creationTime: 1638731218704 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731218707,
+  creationTime: 1638731218708 }
+Raddec {
+  transmitterId: '14562b75e65a',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets:
+   [ '42255ae6752b56141eff0600010920027c4100091244e8fcab2026387930f755f720da010d4a3a' ],
+  earliestDecodingTime: 1638731218716,
+  creationTime: 1638731218716 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -79,
+       numberOfDecodings: 1,
+       rssiSum: -79 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731218763,
+  creationTime: 1638731218764 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '401702b593535f5e02011a020a080aff4c001005641cd5d44c' ],
+  earliestDecodingTime: 1638731218773,
+  creationTime: 1638731218773 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '440602b593535f5e' ],
+  earliestDecodingTime: 1638731218774,
+  creationTime: 1638731218775 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731218783,
+  creationTime: 1638731218783 }
+Raddec {
+  transmitterId: '1df44f670308',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '42150803674ff41d02011a0bff4c0009060308c0a8001a' ],
+  earliestDecodingTime: 1638731218793,
+  creationTime: 1638731218793 }
+Raddec {
+  transmitterId: '3851a5bb42d0',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -89,
+       numberOfDecodings: 1,
+       rssiSum: -89 } ],
+  packets: [ '4215d042bba5513802011a0bff4c0009060327c0a8009f' ],
+  earliestDecodingTime: 1638731218818,
+  creationTime: 1638731218818 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -74,
+       numberOfDecodings: 1,
+       rssiSum: -74 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731218839,
+  creationTime: 1638731218839 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -75,
+       numberOfDecodings: 1,
+       rssiSum: -75 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731218841,
+  creationTime: 1638731218841 }
+Raddec {
+  transmitterId: '50323775fa1e',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -91,
+       numberOfDecodings: 1,
+       rssiSum: -91 } ],
+  packets: [ '04061efa75373250' ],
+  earliestDecodingTime: 1638731218880,
+  creationTime: 1638731218881 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '001775b20ac9b31c02011a020a040aff4c0010050314107842' ],
+  earliestDecodingTime: 1638731218885,
+  creationTime: 1638731218885 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '040675b20ac9b31c' ],
+  earliestDecodingTime: 1638731218887,
+  creationTime: 1638731218887 }
+Raddec {
+  transmitterId: '6edb0995731c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -92,
+       numberOfDecodings: 1,
+       rssiSum: -92 } ],
+  packets: [ '40181c739509db6e02011a020a0c0bff4c001006011d0c6ebe68' ],
+  earliestDecodingTime: 1638731218888,
+  creationTime: 1638731218889 }
+Raddec {
+  transmitterId: '6edb0995731c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -89,
+       numberOfDecodings: 1,
+       rssiSum: -89 } ],
+  packets: [ '44061c739509db6e' ],
+  earliestDecodingTime: 1638731218890,
+  creationTime: 1638731218890 }
+Raddec {
+  transmitterId: '64f54e5209dc',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -96,
+       numberOfDecodings: 1,
+       rssiSum: -96 } ],
+  packets: [ '0014dc09524ef5640201060a0946422d353230394443' ],
+  earliestDecodingTime: 1638731218935,
+  creationTime: 1638731218935 }
+Raddec {
+  transmitterId: '64f54e5209dc',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -97,
+       numberOfDecodings: 1,
+       rssiSum: -97 } ],
+  packets: [ '0406dc09524ef564' ],
+  earliestDecodingTime: 1638731218937,
+  creationTime: 1638731218937 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -75,
+       numberOfDecodings: 1,
+       rssiSum: -75 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731219025,
+  creationTime: 1638731219026 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -75,
+       numberOfDecodings: 1,
+       rssiSum: -75 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731219027,
+  creationTime: 1638731219027 }
+Raddec {
+  transmitterId: '316adb63d5b1',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets: [ '4215b1d563db6a3102011a0bff4c0009060315c0a8000e' ],
+  earliestDecodingTime: 1638731219036,
+  creationTime: 1638731219036 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '401702b593535f5e02011a020a080aff4c001005641cd5d44c' ],
+  earliestDecodingTime: 1638731219057,
+  creationTime: 1638731219057 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '440602b593535f5e' ],
+  earliestDecodingTime: 1638731219058,
+  creationTime: 1638731219058 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -83,
+       numberOfDecodings: 1,
+       rssiSum: -83 } ],
+  packets: [ '001775b20ac9b31c02011a020a040aff4c0010050314107842' ],
+  earliestDecodingTime: 1638731219066,
+  creationTime: 1638731219066 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '040675b20ac9b31c' ],
+  earliestDecodingTime: 1638731219067,
+  creationTime: 1638731219068 }
+Raddec {
+  transmitterId: '47129a24a909',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '401709a9249a124702011a020a0c0aff4c001005571c42d83a' ],
+  earliestDecodingTime: 1638731219074,
+  creationTime: 1638731219074 }
+Raddec {
+  transmitterId: '47129a24a909',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '440609a9249a1247' ],
+  earliestDecodingTime: 1638731219076,
+  creationTime: 1638731219076 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731219153,
+  creationTime: 1638731219153 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets: [ '040611e89106de50' ],
+  earliestDecodingTime: 1638731219154,
+  creationTime: 1638731219155 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731219165,
+  creationTime: 1638731219166 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4406c6be63022e75' ],
+  earliestDecodingTime: 1638731219167,
+  creationTime: 1638731219167 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731219217,
+  creationTime: 1638731219217 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -70,
+       numberOfDecodings: 1,
+       rssiSum: -70 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731219228,
+  creationTime: 1638731219228 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731219328,
+  creationTime: 1638731219328 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '401702b593535f5e02011a020a080aff4c001005641cd5d44c' ],
+  earliestDecodingTime: 1638731219329,
+  creationTime: 1638731219330 }
+Raddec {
+  transmitterId: '5e5f5393b502',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '440602b593535f5e' ],
+  earliestDecodingTime: 1638731219331,
+  creationTime: 1638731219331 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731219337,
+  creationTime: 1638731219338 }
+Raddec {
+  transmitterId: '47129a24a909',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets: [ '401709a9249a124702011a020a0c0aff4c001005571c42d83a' ],
+  earliestDecodingTime: 1638731219344,
+  creationTime: 1638731219344 }
+Raddec {
+  transmitterId: '47129a24a909',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets: [ '440609a9249a1247' ],
+  earliestDecodingTime: 1638731219346,
+  creationTime: 1638731219346 }
+Raddec {
+  transmitterId: '14562b75e65a',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets:
+   [ '42255ae6752b56141eff0600010920027c4100091244e8fcab2026387930f755f720da010d4a3a' ],
+  earliestDecodingTime: 1638731219348,
+  creationTime: 1638731219348 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -83,
+       numberOfDecodings: 1,
+       rssiSum: -83 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731219386,
+  creationTime: 1638731219386 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -75,
+       numberOfDecodings: 1,
+       rssiSum: -75 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731219390,
+  creationTime: 1638731219390 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -75,
+       numberOfDecodings: 1,
+       rssiSum: -75 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731219391,
+  creationTime: 1638731219392 }
+Raddec {
+  transmitterId: '316adb63d5b1',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets: [ '4215b1d563db6a3102011a0bff4c0009060315c0a8000e' ],
+  earliestDecodingTime: 1638731219399,
+  creationTime: 1638731219400 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '001775b20ac9b31c02011a020a040aff4c0010050314107842' ],
+  earliestDecodingTime: 1638731219430,
+  creationTime: 1638731219430 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -83,
+       numberOfDecodings: 1,
+       rssiSum: -83 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731219437,
+  creationTime: 1638731219437 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '4406c6be63022e75' ],
+  earliestDecodingTime: 1638731219438,
+  creationTime: 1638731219439 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731219468,
+  creationTime: 1638731219468 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -52,
+       numberOfDecodings: 1,
+       rssiSum: -52 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731219530,
+  creationTime: 1638731219530 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -52,
+       numberOfDecodings: 1,
+       rssiSum: -52 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731219531,
+  creationTime: 1638731219531 }
+Raddec {
+  transmitterId: '1cb3c90ab275',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -91,
+       numberOfDecodings: 1,
+       rssiSum: -91 } ],
+  packets: [ '001775b20ac9b31c02011a020a040aff4c0010050314107842' ],
+  earliestDecodingTime: 1638731219615,
+  creationTime: 1638731219615 }
+Raddec {
+  transmitterId: '47129a24a909',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '401709a9249a124702011a020a0c0aff4c001005571c42d83a' ],
+  earliestDecodingTime: 1638731219618,
+  creationTime: 1638731219618 }
+Raddec {
+  transmitterId: '47129a24a909',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets: [ '440609a9249a1247' ],
+  earliestDecodingTime: 1638731219619,
+  creationTime: 1638731219619 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -76,
+       numberOfDecodings: 1,
+       rssiSum: -76 } ],
+  packets: [ '4017efe302976b5202011a020a080aff4c001005611ce95f94' ],
+  earliestDecodingTime: 1638731219621,
+  creationTime: 1638731219621 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -76,
+       numberOfDecodings: 1,
+       rssiSum: -76 } ],
+  packets: [ '4406efe302976b52' ],
+  earliestDecodingTime: 1638731219622,
+  creationTime: 1638731219623 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731219639,
+  creationTime: 1638731219639 }
+Raddec {
+  transmitterId: '14562b75e65a',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets:
+   [ '42255ae6752b56141eff0600010920027c4100091244e8fcab2026387930f755f720da010d4a3a' ],
+  earliestDecodingTime: 1638731219667,
+  creationTime: 1638731219667 }
+Raddec {
+  transmitterId: '24fce5262637',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets:
+   [ '0222372626e5fc241bff7500420401806024fce526263726fce526263601cf0000000000' ],
+  earliestDecodingTime: 1638731219690,
+  creationTime: 1638731219690 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -82,
+       numberOfDecodings: 1,
+       rssiSum: -82 } ],
+  packets: [ '001711e89106de5002011a020a0c0aff4c0010050914cb9ecf' ],
+  earliestDecodingTime: 1638731219706,
+  creationTime: 1638731219706 }
+Raddec {
+  transmitterId: '50de0691e811',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -81,
+       numberOfDecodings: 1,
+       rssiSum: -81 } ],
+  packets: [ '040611e89106de50' ],
+  earliestDecodingTime: 1638731219708,
+  creationTime: 1638731219708 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731219716,
+  creationTime: 1638731219717 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4406c6be63022e75' ],
+  earliestDecodingTime: 1638731219718,
+  creationTime: 1638731219718 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731219730,
+  creationTime: 1638731219730 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731219753,
+  creationTime: 1638731219753 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -74,
+       numberOfDecodings: 1,
+       rssiSum: -74 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731219754,
+  creationTime: 1638731219755 }
+Raddec {
+  transmitterId: '316adb63d5b1',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -84,
+       numberOfDecodings: 1,
+       rssiSum: -84 } ],
+  packets: [ '4215b1d563db6a3102011a0bff4c0009060315c0a8000e' ],
+  earliestDecodingTime: 1638731219765,
+  creationTime: 1638731219765 }
+Raddec {
+  transmitterId: '2e37a2dd8ffb',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -95,
+       numberOfDecodings: 1,
+       rssiSum: -95 } ],
+  packets:
+   [ '4223fb8fdda2372e1cff06000109210aa82bdfc294f84c4150544f502d414a5551464d4437' ],
+  earliestDecodingTime: 1638731219780,
+  creationTime: 1638731219780 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -44,
+       numberOfDecodings: 1,
+       rssiSum: -44 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731219808,
+  creationTime: 1638731219808 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -44,
+       numberOfDecodings: 1,
+       rssiSum: -44 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731219810,
+  creationTime: 1638731219810 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets: [ '4017efe302976b5202011a020a080aff4c001005611ce95f94' ],
+  earliestDecodingTime: 1638731219893,
+  creationTime: 1638731219893 }
+Raddec {
+  transmitterId: '526b9702e3ef',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -90,
+       numberOfDecodings: 1,
+       rssiSum: -90 } ],
+  packets: [ '4406efe302976b52' ],
+  earliestDecodingTime: 1638731219895,
+  creationTime: 1638731219895 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '0015bfe7eacd69c802011a0bff4c0009060301c0a80105' ],
+  earliestDecodingTime: 1638731219938,
+  creationTime: 1638731219938 }
+Raddec {
+  transmitterId: 'c869cdeae7bf',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -73,
+       numberOfDecodings: 1,
+       rssiSum: -73 } ],
+  packets: [ '0406bfe7eacd69c8' ],
+  earliestDecodingTime: 1638731219940,
+  creationTime: 1638731219940 }
+Raddec {
+  transmitterId: '8c79f5e3d5d9',
+  transmitterIdType: 2,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -79,
+       numberOfDecodings: 1,
+       rssiSum: -79 } ],
+  packets:
+   [ '0222d9d5e3f5798c1bff750042040180608c79f5e3d5d98e79f5e3d5d801000000000000' ],
+  earliestDecodingTime: 1638731219945,
+  creationTime: 1638731219946 }
+Raddec {
+  transmitterId: '316adb63d5b1',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -81,
+       numberOfDecodings: 1,
+       rssiSum: -81 } ],
+  packets: [ '4215b1d563db6a3102011a0bff4c0009060315c0a8000e' ],
+  earliestDecodingTime: 1638731219949,
+  creationTime: 1638731219949 }
+Raddec {
+  transmitterId: '6edb0995731c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets: [ '40181c739509db6e02011a020a0c0bff4c001006011d0c6ebe68' ],
+  earliestDecodingTime: 1638731219974,
+  creationTime: 1638731219975 }
+Raddec {
+  transmitterId: '6edb0995731c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -85,
+       numberOfDecodings: 1,
+       rssiSum: -85 } ],
+  packets: [ '44061c739509db6e' ],
+  earliestDecodingTime: 1638731219976,
+  creationTime: 1638731219977 }
+Raddec {
+  transmitterId: '7fd500028b5c',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -91,
+       numberOfDecodings: 1,
+       rssiSum: -91 } ],
+  packets:
+   [ '46225c8b0200d57f03039ffe17169ffe0000000000000000000000000000000000000000' ],
+  earliestDecodingTime: 1638731219983,
+  creationTime: 1638731219983 }
+Raddec {
+  transmitterId: '14562b75e65a',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -88,
+       numberOfDecodings: 1,
+       rssiSum: -88 } ],
+  packets:
+   [ '42255ae6752b56141eff0600010920027c4100091244e8fcab2026387930f755f720da010d4a3a' ],
+  earliestDecodingTime: 1638731219987,
+  creationTime: 1638731219988 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -86,
+       numberOfDecodings: 1,
+       rssiSum: -86 } ],
+  packets: [ '4017c6be63022e7502011a020a0c0aff4c001005081c6b22cd' ],
+  earliestDecodingTime: 1638731219995,
+  creationTime: 1638731219995 }
+Raddec {
+  transmitterId: '752e0263bec6',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -87,
+       numberOfDecodings: 1,
+       rssiSum: -87 } ],
+  packets: [ '4406c6be63022e75' ],
+  earliestDecodingTime: 1638731219997,
+  creationTime: 1638731219997 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -44,
+       numberOfDecodings: 1,
+       rssiSum: -44 } ],
+  packets: [ '401794d819f3b86e02011a020a080aff4c001005651c70ecbd' ],
+  earliestDecodingTime: 1638731220079,
+  creationTime: 1638731220079 }
+Raddec {
+  transmitterId: '6eb8f319d894',
+  transmitterIdType: 3,
+  rssiSignature:
+   [ { receiverId: 'dca6329517fe',
+       receiverIdType: 2,
+       rssi: -44,
+       numberOfDecodings: 1,
+       rssiSum: -44 } ],
+  packets: [ '440694d819f3b86e' ],
+  earliestDecodingTime: 1638731220080,
+  creationTime: 1638731220081 }

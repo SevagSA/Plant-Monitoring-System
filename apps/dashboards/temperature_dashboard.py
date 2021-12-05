@@ -4,6 +4,8 @@ from dash import dcc, html
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 
+from rfid_config import get_temp_threshold, get_auth_user, set_temp_threshold
+
 from app import app
 
 from utils.helper_functions import get_temperature, send_email
@@ -11,7 +13,8 @@ from utils.helper_functions import get_temperature, send_email
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
-threshold_value = 24  # database value
+threshold_value = get_temp_threshold(get_auth_user())
+
 
 layout = html.Div([
     html.H3('Temperature Dashboard',
@@ -29,11 +32,11 @@ layout = html.Div([
     html.Div([
         html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
-            dcc.Input(id='temperature-threshold', type='number'),
+            dcc.Input(id='temperature-threshold', type='number', value=get_temp_threshold(get_auth_user())),
             dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0,
                        style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='temperature-threshold-text',
-                   children='Please enter a photoresistor threshold.', style={"color": "white"}),
+                   children='Please enter a temperature threshold.', style={"color": "white"}),
         ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center', 'align-items': 'center', 'padding': '10px'}),
         dbc.Button("Get Temperature", id='get-temp-btn', n_clicks=0,
                    style={'background-color': 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
@@ -44,7 +47,8 @@ layout = html.Div([
 @app.callback(Output('temperature-threshold-text', 'children'), [Input('submit-temperature-threshold', 'n_clicks')], [State('temperature-threshold', 'value')],)
 def update_output(n_clicks, input_value):
     global threshold_value
-    threshold_value = input_value  # set in database
+    threshold_value = input_value
+    set_temp_threshold(get_auth_user(), threshold_value)
     print("Modified thresholdValue : " + str(threshold_value))
     if n_clicks is not None:
         return u'''

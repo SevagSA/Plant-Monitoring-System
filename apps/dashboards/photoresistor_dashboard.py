@@ -7,8 +7,10 @@ from dash import dcc, html
 from dash.dependencies import Input, Output, State
 
 from app import app
+from rfid_config import get_photoresistor_threshold, get_auth_user, set_photoresistor_threshold
 
-from utils.helper_functions import get_light, led_on
+
+from utils.helper_functions import led_on
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
@@ -43,7 +45,7 @@ layout = html.Div([
     html.Div([
         html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
-            dcc.Input(id='light-threshold', type='number'),
+            dcc.Input(id='light-threshold', type='number', value=get_photoresistor_threshold(get_auth_user())),
             dbc.Button("Submit Threshold", id='submit-light-threshold', n_clicks=0, type='submit',
                        style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='light-threshold-text',
@@ -62,7 +64,8 @@ def update_output(n_clicks, input_value):
 
         print(input_value)
         global threshold_value
-        threshold_value = input_value  # set in database
+        threshold_value = input_value
+        set_photoresistor_threshold(get_auth_user(), threshold_value)
         print("Modified thresholdValue : " + str(threshold_value))
         if n_clicks is not None:
             return u'''

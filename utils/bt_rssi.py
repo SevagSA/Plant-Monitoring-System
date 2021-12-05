@@ -9,7 +9,7 @@ import re
 
 
 def get_device_information():
-    devices = os.system('sudo /usr/bin/node ../bluetoothTest.js > output.txt')
+    devices = os.system('sudo /usr/bin/node bluetoothTest.js > output.txt')
     deviceList = []
     rssiList = []
     informationDict = {}

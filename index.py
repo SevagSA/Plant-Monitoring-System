@@ -9,18 +9,9 @@ from apps import home_page
 # from Database.database import Database
 
 from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard, bluetooth
+from rfid_config import get_user_name, get_auth_user
 # import utils.sending_receiving_email
 # from apps.utils import dashboard_button
-
-
-###########PSEUDOCODE START###########
-# rfid_tag = get_current_rfid_id()
-rfid_tag = 123412
-###########PSEUDOCODE END#############
-
-user_name = "User"  # Default display
-# if rfid_tag is not None:
-# 	user_name=Database.get_name(rfid_tag)
 
 CONTENT_STYLE = {
     "margin-left": "18rem",
@@ -56,7 +47,7 @@ sidebar = html.Div(
                 },
                 className="lead"
             ),
-            html.H4(f"Welcome {user_name}", className="display-6", style={"font-size": 20})],
+            html.H4(f"Sage System", className="display-6", style={"font-size": 20})],
             style={
                 "display": "flex",
                 "align-items": "center",
@@ -85,6 +76,7 @@ sidebar = html.Div(
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content], style={
                       "background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
+
 
 
 @ app.callback(Output('page-content', 'children'),

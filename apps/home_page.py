@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 import random
+import datetime
+import time
 
 from dash.html.Button import Button
 import constants
@@ -11,11 +13,11 @@ from app import app
 from dash.dependencies import Input, Output
 from paho.mqtt import client as mqtt_client
 from dash import dcc, html, Input, Output, State
-from utils.helper_functions import get_humidity, get_temperature, dc_motor_on, get_light, send_email
+from utils.helper_functions import get_humidity, get_temperature, dc_motor_on, user_login
 
 import dash_daq as daq
 
-from rfid_config import set_auth_user, get_auth_user
+from rfid_config import set_auth_user, get_auth_user, get_user_name
 
 # For LED
 pin = 40
@@ -32,7 +34,7 @@ username = 'emqx'
 password = 'public'
 
 rfid_tag = None
-valid_rfid_tags = ["124103131100", "131504313"]
+valid_rfid_tags = ["124103131100", "131504313","4117726232"]
 is_authenticated = False
 
 GAUGE_STYLE = {
@@ -55,17 +57,21 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
+
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
         global is_authenticated
+        global rfid_tag
         rfid_tag = msg.payload.decode()
         if not rfid_tag in valid_rfid_tags:
             print("not valid tag")
             is_authenticated = False
         else:
             is_authenticated = True
-            set_auth_user(rfid_tag)
-            send_email()
+            
+
+            user_login(f"Hi user, you have logged in at : {datetime.datetime.now()}")
+            time.sleep(0.1)
             print("this is a valid tag")
 
         print(str(is_authenticated) + " here")
@@ -255,61 +261,9 @@ def update_output(n_clicks, value):
     [Input('page_renderer', 'n_intervals')])
 def rerender_layout(v):
     if is_authenticated:
-        return ["Hi Sevag", auth_layout]
+        set_auth_user(rfid_tag)
+        print(rfid_tag)
+        return [f"Hi {get_user_name(rfid_tag)}", auth_layout]
     else:
-        # return ["Unauthorized Person", unauth_layout]
-        return ["Welcome Sevag", auth_layout]
+        return ["Unauthorized Person", unauth_layout]
 
-    # html.H3(
-    #     children='Plant Monitoring System Home Page',
-    #     style={
-    #         'textAlign': 'center',
-    #         'color': 'white',
-    #         'padding': '10px',
-    #         'margin-bottom': '20px',
-    #         'background-color': assets.SECONDARY_COLOR
-    #     }
-    # ),
-    # html.Br(),
-    # dbc.Row(
-    #     [
-    #         dbc.Col(html.Div([
-    #             html.H4("Temperature Dashboard"),
-    #             html.P(
-    #                 "Track the temperature of the room that your plant is in."),
-    #             html.P("Current Temperature: " +
-    #                    str(get_temperature())),
-    #             dcc.Link(dbc.Button("Temperature Dashboard", color="primary", className="me-1",
-    #                                 style={"background-color": assets.THIRD_COLOR, "border": "none"}), href='/dashboards/temperature'),
-    #         ]),
-    #             style={'backgroundColor': assets.SECONDARY_COLOR, 'color': 'white', 'text-align': "center", 'margin': '5px', 'padding': '5px'}),
-    #         dbc.Col(html.Div([
-    #             html.H4("Humidity Dashboard"),
-    #             html.P(
-    #                 "Track the humidity of the room that your plant is in."),
-    #             html.P("Current Humidity: " + str(get_humidity())),
-    #             dcc.Link(dbc.Button("Humidity Dashboard", color="primary", className="me-1",
-    #                                 style={"background-color": '#000080', "border": "none"}), href='/dashboards/humidity'),
-    #         ]),  style={'backgroundColor': 'chocolate', 'color': 'white', 'text-align': "center", 'margin': '5px', 'padding': '5px'}),
-    #     ],
-    # ),
-    # dbc.Row([
-    #     dbc.Col(html.Div([
-    #         html.H4("Photoresistor"),
-    #         html.P(
-    #             "Measure the lighting of the room that your plant is in."),
-    #         html.P("Current light level: " + str(get_light())),
-    #         dcc.Link(dbc.Button("Photoresitor", color="primary", className="me-1",
-    #                             style={"background-color": '#000080', "border": "none"}), href='/dashboards/photoresistor',)
-    #     ]), style={'backgroundColor': 'chocolate', 'color': 'white', 'text-align': "center", 'margin': '5px', 'padding': '5px'}),
-    #     dbc.Col(html.Div([
-    #         html.H4("LED Button"),
-    #         html.P("Toggle an LED with the click of a button."),
-    #         html.P(id='led-status'),
-    #         dbc.Button("Toggle Button", id='submit-val', color="primary", className="me-1", n_clicks=0,
-    #                    style={"background-color": 'chocolate', "border": "none"}),
-    #         html.Div(id='input-on-submit'),
-    #         html.Div(id='container-button-basic')
-
-    #     ]), style={'backgroundColor': '#000080', 'color': 'white', 'text-align': "center", 'margin': '5px', 'padding': '5px'}),
-    # ]),

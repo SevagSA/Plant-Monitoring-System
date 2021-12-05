@@ -1,17 +1,20 @@
 import sqlite3
 
-con = sqlite3.connect('userSettings.db')
+con = sqlite3.connect('userSettings.db',check_same_thread=False)
 
 cur = con.cursor()
 
 
 def get_temp_threshold(rfid_tag):
-    cur.execute(
-        f'SELECT temperature_threshold FROM preference_dict WHERE tag="{rfid_tag}"')
+    if rfid_tag == "None":
+        return 0
+    cur.execute(f'SELECT temperature_threshold FROM preference_dict WHERE tag="{rfid_tag}"')
     return cur.fetchone()[0]
 
 
 def get_photoresistor_threshold(rfid_tag):
+    if rfid_tag == "None":
+            return 0
     cur.execute(
         f'SELECT photoresistor_threshold FROM preference_dict WHERE tag="{rfid_tag}"')
     return cur.fetchone()[0]
@@ -24,20 +27,22 @@ def set_temp_threshold(rfid_tag, threshold):
 
 
 def set_photoresistor_threshold(rfid_tag, threshold):
+    print("in set", threshold)
     cur.execute(
         f'UPDATE preference_dict SET photoresistor_threshold = {threshold} WHERE tag="{rfid_tag}"')
     con.commit()
 
 
 def get_auth_user():
-    cur.execute('SELECT user_tag FROM authenticated_user')
-    return cur.fetchone()[0]
+      with open("current_rfid_tag.txt", "r+") as file:
+        return file.read()
 
 
 def set_auth_user(rfid_tag):
-    cur.execute(
-        f'UPDATE authenticated_user SET user_tag = {rfid_tag}')
-    con.commit()
+    with open("current_rfid_tag.txt", "w") as file:
+        file.write(rfid_tag)
+        file.close() 
 
-
-con.close()
+def get_user_name(tag):
+    cur.execute(f'SELECT name FROM preference_dict WHERE tag="{tag}"')
+    return cur.fetchone()[0]
