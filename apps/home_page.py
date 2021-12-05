@@ -84,7 +84,10 @@ unauth_layout = html.P(
 run()
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+
+# TODO
 temperature_list = [5, 3, 4, 6, 6, 4, 6, 7, 5, 6]
+# TODO
 humidity_list = [54, 82, 46, 26, 65, 47, 75, 67, 61, 78, 39]
 
 table_header = [
@@ -186,7 +189,7 @@ auth_layout = html.Div([
                 html.Div(id="led-btn-holder", children=[
                     html.H3("Toggle LED", style={
                             "color": constants.TEXT_COLOR, "margin-bottom": "20px"}),
-                    
+
                     html.Button("Open LED", id='', n_clicks=0, style={
                         "width": "100%",
                         "border": "none",
@@ -195,10 +198,10 @@ auth_layout = html.Div([
                         "color": constants.TEXT_COLOR,
                         "font-size": "20px"
                     }),
-                    
-                            
-                
-                    
+
+
+
+
                 ], style={"margin-bottom": "60px"}),
                  table,
                  html.Div([
