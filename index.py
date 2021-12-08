@@ -73,13 +73,13 @@ sidebar = html.Div(
             vertical=True,
             pills=True,
         ),
-         html.Button("Toggle LED", id="led-btn", n_clicks=0, style={
-                        "width": "90%",
-                        "border": "none",
-                        "height": "40px",
-                        "background": constants.THIRD_COLOR,
-                        "color": constants.TEXT_COLOR,
-                    }),
+        html.Button("Toggle LED", id="led-btn", n_clicks=0, style={
+            "width": "90%",
+            "border": "none",
+            "height": "40px",
+            "background": constants.THIRD_COLOR,
+            "color": constants.TEXT_COLOR,
+        }),
     ],
     style=SIDEBAR_STYLE,
 )
@@ -89,26 +89,25 @@ app.layout = html.Div([dcc.Location(id="url"), sidebar, content], style={
                       "background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
 
 
-
 @app.callback(
     Output('led-btn', 'children'),
     Input('led-btn', 'n_clicks'),)
 def update_output(n_clicks):
     if (n_clicks % 2 == 1):
-        print("ON")
         GPIO.output(pin, True)
         return "Currently the LED is On"
-        
+
     else:
-        print("OFF")
         GPIO.output(pin, False)
         return "Currently the LED is Off"
-
 
 
 @ app.callback(Output('page-content', 'children'),
                Input('url', 'pathname'))
 def display_page(pathname):
+    """
+    Routing function responsible for rendering the correct layout based on the url path.
+    """
     if pathname == '/':
         return home_page.layout
     elif pathname == '/dashboards/humidity':

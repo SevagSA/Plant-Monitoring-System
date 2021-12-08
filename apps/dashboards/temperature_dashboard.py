@@ -1,15 +1,13 @@
-from dash.html.Div import Div
 import constants
+import dash_bootstrap_components as dbc
 import RPi.GPIO as GPIO
+from app import app
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
-import dash_bootstrap_components as dbc
+from dash.html.Div import Div
+from rfid_config import get_auth_user, get_temp_threshold, set_temp_threshold
+from utils.helper_functions import get_temperature, motor_on, send_email
 
-from rfid_config import get_temp_threshold, get_auth_user, set_temp_threshold
-
-from app import app
-
-from utils.helper_functions import get_temperature, send_email, motor_on
 pin = 38
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -36,7 +34,8 @@ layout = html.Div([
     html.Div([
         html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
-            dcc.Input(id='temperature-threshold', type='number', value=get_temp_threshold(get_auth_user())),
+            dcc.Input(id='temperature-threshold', type='number',
+                      value=get_temp_threshold(get_auth_user())),
             dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0,
                        style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='temperature-threshold-text',
@@ -50,10 +49,12 @@ layout = html.Div([
 
 @app.callback(Output('temperature-threshold-text', 'children'), [Input('submit-temperature-threshold', 'n_clicks')], [State('temperature-threshold', 'value')],)
 def update_output(n_clicks, input_value):
+    """
+    Update temperature threshold.
+    """
     global threshold_value
     threshold_value = input_value
     set_temp_threshold(get_auth_user(), threshold_value)
-    print("Modified thresholdValue : " + str(threshold_value))
     if n_clicks is not None:
         return u'''
         The current threshold is {}.
@@ -64,18 +65,14 @@ def update_output(n_clicks, input_value):
     Output('temperature-graph', 'figure'),
     [Input('temp-interval', 'n_intervals')])
 def run_script_onClick(n_clicks):
+    """
+    Get the current temperature and display the data on the graph.
+    """
     current_temperature = get_temperature()
     if threshold_value and current_temperature > threshold_value:
-        print("Getting the threshold value : " + str(threshold_value))
-        print("Current Threshold is : ")
-        print(threshold_value)
-        print("Current Temperature is : ")
-        print(current_temperature)
-        print("It is higher")
         send_email()
-       
+
     temperature_list.append(current_temperature)
-    print(current_temperature, "here")
     return {
         'data': [
             {'x': time_of_day, 'y': temperature_list,

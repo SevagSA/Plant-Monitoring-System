@@ -1,5 +1,4 @@
 import smtplib
-# import RPi.GPIO as GPIO
 import time
 import ssl
 import email
@@ -16,12 +15,10 @@ def send_email(text):
     subject = "From Rpi Ali Lezzeik"
     message = 'Subject: {}\n\n{}'.format(subject, text)
     context = ssl.create_default_context()
-    print("sending")
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(sender, password)
         server.sendmail(sender, receiver, message)
-        print("sent email!")
 
 
 def receive_email():
@@ -60,12 +57,9 @@ def execute_email_service():
     while True:
         answer = receive_email()
         if(answer == 'yes'):
-            print("On")
             motor_on()
             break
         elif(answer == 'no'):
-            print("Off")
             break
         else:
-            print("Checking inbox for emails...")
             time.sleep(3)

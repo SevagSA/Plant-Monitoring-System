@@ -28,7 +28,6 @@ def set_temp_threshold(rfid_tag, threshold):
 
 
 def set_photoresistor_threshold(rfid_tag, threshold):
-    print("in set", threshold)
     cur.execute(
         f'UPDATE preference_dict SET photoresistor_threshold = {threshold} WHERE tag="{rfid_tag}"')
     con.commit()

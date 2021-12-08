@@ -13,6 +13,7 @@ client_id = f'python-mqtt-{random.randint(0, 100)}'
 username = 'emqx'
 password = 'public'
 
+
 def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
@@ -33,20 +34,6 @@ def subscribe(client: mqtt_client):
 
     client.subscribe(topic)
     client.on_message = on_message
-    
-    ##PSEUDO CODE:
-    #user_ids = [1231412, 123455621]
-    #current_user_id = null
-    #photoresistor_value = null
-    
-    #if (topic is equal to "room/RFID"):
-        #for {id} in {user_ids}:
-            #if (message is equal to {id}):
-                #current_user_id = {id} #Then, retrieve the user with a matching id and use his information to perform the rest of the processing.
-                
-    #if (topic is equal to "room/Photoresistor"):
-        #save into a variable the MQTT message (The MQTT message would contain the photoresistor value)
-        #photoresistor_value = the MQTT message
 
 
 def run():

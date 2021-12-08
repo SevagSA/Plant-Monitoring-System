@@ -1,17 +1,15 @@
+import random
+import time
+
 import constants
-import random, time
-import RPi.GPIO as GPIO
-
 import dash_bootstrap_components as dbc
-
-from paho.mqtt import client as mqtt_client
+import RPi.GPIO as GPIO
+from app import app
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
-
-from app import app
-from rfid_config import get_photoresistor_threshold, get_auth_user, set_photoresistor_threshold
-
-
+from paho.mqtt import client as mqtt_client
+from rfid_config import (get_auth_user, get_photoresistor_threshold,
+                         set_photoresistor_threshold)
 from utils.helper_functions import led_on
 
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
@@ -51,7 +49,8 @@ layout = html.Div([
     html.Div([
         html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
-            dcc.Input(id='light-threshold', type='number', value=get_photoresistor_threshold(get_auth_user())),
+            dcc.Input(id='light-threshold', type='number',
+                      value=get_photoresistor_threshold(get_auth_user())),
             dbc.Button("Submit Threshold", id='submit-light-threshold', n_clicks=0, type='submit',
                        style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='light-threshold-text',
@@ -66,13 +65,14 @@ layout = html.Div([
 
 @ app.callback(Output('light-threshold-text', 'children'), [Input('submit-light-threshold', 'n_clicks')], [State('light-threshold', 'value')],)
 def update_output(n_clicks, input_value):
+    """
+    Update the photoresistor threshold.
+    """
     if input_value:
 
-        print(input_value)
         global threshold_value
         threshold_value = input_value
         set_photoresistor_threshold(get_auth_user(), threshold_value)
-        print("Modified thresholdValue : " + str(threshold_value))
         if n_clicks is not None:
             return u'''
             The current threshold is {}.
@@ -86,6 +86,9 @@ def update_output(n_clicks, input_value):
     State('input-on-submit', 'value')
 )
 def run_script_onClick(n_clicks, value):
+    """
+    Get the current light value and display the data on the graph.
+    """
     values.clear()
     run()
     return {
@@ -110,7 +113,11 @@ def run_script_onClick(n_clicks, value):
         },
     }
 
+
 def connect_mqtt() -> mqtt_client:
+    """
+    Connect to mqtt server.
+    """
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             subscribe(client)
@@ -130,21 +137,20 @@ def subscribe(client: mqtt_client):
 
         if len(values) == 1:
             light_list.append(values[0])
-            print("This is the value : " + str(threshold_value))
-            print(values[0] > threshold_value)
             if threshold_value and values[0] > threshold_value:
                 led_on()
-                GPIO.output(pin,True)
+                GPIO.output(pin, True)
                 time.sleep(3)
-                GPIO.output(pin,False)
-                print("light is higher than threshold")
-        #print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
+                GPIO.output(pin, False)
 
     client.subscribe(topic)
     client.on_message = on_message
 
 
 def run():
+    """
+    Run the MQTT related functionality in a loop
+    """
     client = connect_mqtt()
     # subscribe(client)
     client.loop_start()

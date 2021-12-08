@@ -1,24 +1,21 @@
-import RPi.GPIO as GPIO
-import random
 import datetime
+import random
 import time
 
-from dash.html.Button import Button
 import constants
 import dash
-import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
-
-from app import app
-from dash.dependencies import Input, Output
-from paho.mqtt import client as mqtt_client
-from dash import dcc, html, Input, Output, State
-from utils.helper_functions import get_humidity, get_temperature, dc_motor_on, user_login
-
 import dash_daq as daq
-
-from rfid_config import set_auth_user, get_auth_user, get_user_name
-
+import plotly.graph_objects as go
+import RPi.GPIO as GPIO
+from app import app
+from dash import Input, Output, State, dcc, html
+from dash.dependencies import Input, Output
+from dash.html.Button import Button
+from paho.mqtt import client as mqtt_client
+from rfid_config import get_auth_user, get_user_name, set_auth_user
+from utils.helper_functions import (dc_motor_on, get_humidity, get_temperature,
+                                    user_login)
 
 broker = 'broker.emqx.io'
 port = 1883
@@ -40,7 +37,6 @@ def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             subscribe(client)
-            print("herre")
         else:
             print("Failed to connect, return code %d\n", rc)
 
@@ -51,28 +47,22 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
-
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
         global is_authenticated
         global rfid_tag
         rfid_tag = msg.payload.decode()
         if not rfid_tag in constants.valid_rfid_tags:
-            print("not valid tag")
             GPIO.output(38, True)
             time.sleep(1)
             GPIO.output(38, False)
             is_authenticated = False
         else:
             is_authenticated = True
-            
 
-            user_login(f"Hi user, you have logged in at : {datetime.datetime.now()}")
+            user_login(
+                f"Hi user, you have logged in at : {datetime.datetime.now()}")
             time.sleep(0.1)
-            print("this is a valid tag")
-
-        print(str(is_authenticated) + " here")
-        print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
 
     client.subscribe(topic)
     client.on_message = on_message
@@ -195,15 +185,16 @@ layout = html.Div(children=[
 ])
 
 
-
 @app.callback(
     [Output('user_name', 'children'),
      Output('layout_Div', 'children')],
     [Input('page_renderer', 'n_intervals')])
 def rerender_layout(v):
+    """
+    Render the appropriate layout based on the user's authorization.
+    """
     if is_authenticated:
         set_auth_user(rfid_tag)
-        print(rfid_tag)
         return [f"Hi {get_user_name(rfid_tag)}", auth_layout]
     else:
         return ["Unauthorized Person", unauth_layout]
