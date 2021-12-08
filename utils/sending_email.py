@@ -39,7 +39,7 @@ def user_send_email(message):
     password = "CrazyChicken123"
     receiver = "vanieraliiot@gmail.com"
     port = 465
-    subject = "Light Threshhold Reached"
+    subject = "Welcome message"
     message = 'Subject: {}\n\n{}'.format(subject, message)
     context = ssl.create_default_context()
     print("sending")

@@ -1,5 +1,6 @@
 from dash.html.Div import Div
 import constants
+import RPi.GPIO as GPIO
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
@@ -8,8 +9,11 @@ from rfid_config import get_temp_threshold, get_auth_user, set_temp_threshold
 
 from app import app
 
-from utils.helper_functions import get_temperature, send_email
-
+from utils.helper_functions import get_temperature, send_email, motor_on
+pin = 38
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
@@ -38,9 +42,9 @@ layout = html.Div([
             html.P(id='temperature-threshold-text',
                    children='Please enter a temperature threshold.', style={"color": "white"}),
         ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center', 'align-items': 'center', 'padding': '10px'}),
-        dbc.Button("Get Temperature", id='get-temp-btn', n_clicks=0,
-                   style={'background-color': 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
-    ], style={'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'})
+    ], style={'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'}),
+    dcc.Interval(
+        id="temp-interval", interval=1*10000, n_intervals=0)
 ])
 
 
@@ -58,7 +62,7 @@ def update_output(n_clicks, input_value):
 
 @app.callback(
     Output('temperature-graph', 'figure'),
-    [Input('get-temp-btn', 'n_clicks')])
+    [Input('temp-interval', 'n_intervals')])
 def run_script_onClick(n_clicks):
     current_temperature = get_temperature()
     if threshold_value and current_temperature > threshold_value:
@@ -69,7 +73,7 @@ def run_script_onClick(n_clicks):
         print(current_temperature)
         print("It is higher")
         send_email()
-
+       
     temperature_list.append(current_temperature)
     print(current_temperature, "here")
     return {

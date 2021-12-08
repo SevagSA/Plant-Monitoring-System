@@ -28,13 +28,16 @@ layout = html.Div([
     html.Div([
         dbc.Button("Get Humidity", id='get-humidity-btn', n_clicks=0,
                    style={'background-color': constants.THIRD_COLOR, 'border': 'none'}, className="me-1"),
-    ], style={'display': 'flex', 'justify-content': 'space-between'})
+    ], style={'display': 'flex', 'justify-content': 'space-between'})  ,
+    dcc.Interval(
+        id="photoresistor-interval", interval=1*10000, n_intervals=0)
+    
 ])
 
 
 @app.callback(
     Output('humidity-graph', 'figure'),
-    [Input('get-humidity-btn', 'n_clicks')])
+    [Input('photoresistor-interval', 'n_intervals')])
 def run_script_onClick(n_clicks):
     humidity_list.append(get_humidity())
     return {

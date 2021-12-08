@@ -1,4 +1,5 @@
 import sqlite3
+import constants
 
 con = sqlite3.connect('userSettings.db',check_same_thread=False)
 
@@ -6,14 +7,14 @@ cur = con.cursor()
 
 
 def get_temp_threshold(rfid_tag):
-    if rfid_tag == "None":
+    if rfid_tag == "None" or not rfid_tag in constants.valid_rfid_tags:
         return 0
     cur.execute(f'SELECT temperature_threshold FROM preference_dict WHERE tag="{rfid_tag}"')
     return cur.fetchone()[0]
 
 
 def get_photoresistor_threshold(rfid_tag):
-    if rfid_tag == "None":
+    if rfid_tag == "None" or not rfid_tag in constants.valid_rfid_tags:
             return 0
     cur.execute(
         f'SELECT photoresistor_threshold FROM preference_dict WHERE tag="{rfid_tag}"')

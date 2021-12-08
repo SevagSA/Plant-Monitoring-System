@@ -1,5 +1,7 @@
 import constants
-import random
+import random, time
+import RPi.GPIO as GPIO
+
 import dash_bootstrap_components as dbc
 
 from paho.mqtt import client as mqtt_client
@@ -20,6 +22,10 @@ values = []
 
 threshold_value = 1500  # database value
 
+pin = 37
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
 
 broker = 'broker.emqx.io'
 port = 1883
@@ -51,10 +57,10 @@ layout = html.Div([
             html.P(id='light-threshold-text',
                    children='Please enter a photoresistor threshold.', style={"color": constants.TEXT_COLOR}),
         ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center', 'align-items': 'center', 'padding': '10px'}),
-        dbc.Button("Get Light", id='get-light-btn', n_clicks=0,
-                   style={'background-color': 'chocolate', 'border': 'none', 'height': '45px'}, className="me-1"),
     ], style={'display': 'flex', 'justify-content': 'space-between', 'align-items': 'center'}),
     html.Div(id='input-on-submit'),
+    dcc.Interval(
+        id="photoresistor-interval", interval=1*10000, n_intervals=0)
 ])
 
 
@@ -76,7 +82,7 @@ def update_output(n_clicks, input_value):
 
 @ app.callback(
     Output('photoresistor-graph', 'figure'),
-    Input('get-light-btn', 'n_clicks'),
+    Input('photoresistor-interval', 'n_intervals'),
     State('input-on-submit', 'value')
 )
 def run_script_onClick(n_clicks, value):
@@ -104,7 +110,6 @@ def run_script_onClick(n_clicks, value):
         },
     }
 
-
 def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
@@ -129,6 +134,9 @@ def subscribe(client: mqtt_client):
             print(values[0] > threshold_value)
             if threshold_value and values[0] > threshold_value:
                 led_on()
+                GPIO.output(pin,True)
+                time.sleep(3)
+                GPIO.output(pin,False)
                 print("light is higher than threshold")
         #print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
 

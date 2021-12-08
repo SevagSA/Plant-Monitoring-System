@@ -1,4 +1,5 @@
 import constants
+import RPi.GPIO as GPIO
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
@@ -6,18 +7,21 @@ import dash_bootstrap_components as dbc
 from app import app
 from apps import home_page
 
-# from Database.database import Database
-
 from apps.dashboards import humidity_dashboard, temperature_dashboard, photoresistor_dashboard, bluetooth
 from rfid_config import get_user_name, get_auth_user
-# import utils.sending_receiving_email
-# from apps.utils import dashboard_button
+
 
 CONTENT_STYLE = {
     "margin-left": "18rem",
     "margin-right": "2rem",
     "padding": "2rem 1rem",
 }
+
+# For LED
+pin = 40
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(pin, GPIO.OUT)
 
 content = html.Div([html.Div(id='page-content'), ], style=CONTENT_STYLE)
 
@@ -69,6 +73,13 @@ sidebar = html.Div(
             vertical=True,
             pills=True,
         ),
+         html.Button("Toggle LED", id="led-btn", n_clicks=0, style={
+                        "width": "90%",
+                        "border": "none",
+                        "height": "40px",
+                        "background": constants.THIRD_COLOR,
+                        "color": constants.TEXT_COLOR,
+                    }),
     ],
     style=SIDEBAR_STYLE,
 )
@@ -76,6 +87,22 @@ sidebar = html.Div(
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content], style={
                       "background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
+
+
+
+@app.callback(
+    Output('led-btn', 'children'),
+    Input('led-btn', 'n_clicks'),)
+def update_output(n_clicks):
+    if (n_clicks % 2 == 1):
+        print("ON")
+        GPIO.output(pin, True)
+        return "Currently the LED is On"
+        
+    else:
+        print("OFF")
+        GPIO.output(pin, False)
+        return "Currently the LED is Off"
 
 
 

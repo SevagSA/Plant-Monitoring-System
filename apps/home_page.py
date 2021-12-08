@@ -19,11 +19,6 @@ import dash_daq as daq
 
 from rfid_config import set_auth_user, get_auth_user, get_user_name
 
-# For LED
-pin = 40
-GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(False)
-GPIO.setup(pin, GPIO.OUT)
 
 broker = 'broker.emqx.io'
 port = 1883
@@ -34,7 +29,6 @@ username = 'emqx'
 password = 'public'
 
 rfid_tag = None
-valid_rfid_tags = ["124103131100", "131504313","4117726232"]
 is_authenticated = False
 
 GAUGE_STYLE = {
@@ -63,8 +57,11 @@ def subscribe(client: mqtt_client):
         global is_authenticated
         global rfid_tag
         rfid_tag = msg.payload.decode()
-        if not rfid_tag in valid_rfid_tags:
+        if not rfid_tag in constants.valid_rfid_tags:
             print("not valid tag")
+            GPIO.output(38, True)
+            time.sleep(1)
+            GPIO.output(38, False)
             is_authenticated = False
         else:
             is_authenticated = True
@@ -167,50 +164,9 @@ auth_layout = html.Div([
                 },
             }
         ),
-        # dcc.Graph(
-        #     id='temperature-graph',
-        #     figure={
-        #         'data': [
-        #             {'x': time_of_day, 'y': temperature_list,
-        #                 'type': 'line', 'name': 'Humidity',
-        #              'marker': {"color": constants.SECONDARY_COLOR}},
-        #         ],
-        #         'layout': {
-        #             'title': 'Photoresistor',
-        #             'xaxis': {
-        #                 'title': 'Time of day'
-        #             },
-        #             'yaxis': {
-        #                 'title': 'Temperature'
-        #             },
-        #             'plot_bgcolor': constants.PRIMARY_COLOR,
-        #             'paper_bgcolor': constants.PRIMARY_COLOR,
-        #             'font': {
-        #                 'color': constants.TEXT_COLOR
-        #             }
-        #         },
-        #     }
-        # ),
     ], style={"flex": 0.7}),
     html.Div(id="bluetooth-table-holder",
              children=[
-                html.Div(id="led-btn-holder", children=[
-                    html.H3("Toggle LED", style={
-                            "color": constants.TEXT_COLOR, "margin-bottom": "20px"}),
-
-                    html.Button("Open LED", id='', n_clicks=0, style={
-                        "width": "100%",
-                        "border": "none",
-                        "height": "40px",
-                        "background": constants.SECONDARY_COLOR,
-                        "color": constants.TEXT_COLOR,
-                        "font-size": "20px"
-                    }),
-
-
-
-
-                ], style={"margin-bottom": "60px"}),
                  table,
                  html.Div([
                      html.H4("Current Photoresistor Value", style={
@@ -239,21 +195,6 @@ layout = html.Div(children=[
 ])
 
 
-@app.callback(
-    Output('led-status', 'children'),
-    Input('led-btn', 'n_clicks'),
-    State('input-on-submit', 'value'))
-def update_output(n_clicks, value):
-    print("here")
-    if (n_clicks % 2 == 1):
-        print("ON")
-        GPIO.output(pin, True)
-        return "Currently the LED is On"
-    else:
-        print("OFF")
-        GPIO.output(pin, False)
-        return "Currently the LED is Off"
-
 
 @app.callback(
     [Output('user_name', 'children'),
@@ -266,4 +207,3 @@ def rerender_layout(v):
         return [f"Hi {get_user_name(rfid_tag)}", auth_layout]
     else:
         return ["Unauthorized Person", unauth_layout]
-
