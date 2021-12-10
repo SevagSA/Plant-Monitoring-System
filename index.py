@@ -17,7 +17,7 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 
-# For LED
+# LED GPIO pin setup
 pin = 40
 relay_pin = 32
 GPIO.setmode(GPIO.BOARD)
@@ -88,7 +88,7 @@ sidebar = html.Div(
 app.layout = html.Div(id='main-div',
                       children=[
                           html.Div([dcc.Location(id="url"), sidebar, content])],
-                    style={"background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
+                      style={"background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
 
 
 @app.callback(

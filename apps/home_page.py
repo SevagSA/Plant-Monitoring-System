@@ -76,13 +76,14 @@ def run():
 unauth_layout = html.P(
     "You're not authenticated. Please scan your rfid tag to authenticate")
 
+# Run the MQTT functionality
 run()
+
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
-# TODO
+
 temperature_list = [5, 3, 4, 6, 6, 4, 6, 7, 5, 6]
-# TODO
 humidity_list = [54, 82, 46, 26, 65, 47, 75, 67, 61, 78, 39]
 
 table_header = [
@@ -91,13 +92,14 @@ table_header = [
 ]
 
 row1 = html.Tr([html.Td("1", style={
-               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("60-C1-15-F8-FA-2C"), html.Td("Some Info")])
+               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("60-C1-15-F8-FA-2C"), html.Td("86")])
 row2 = html.Tr([html.Td("2", style={
-               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("19-A2-18-EC-DB-4F"), html.Td("Some Info")])
+               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("19-A2-18-EC-DB-4F"), html.Td("72")])
 row3 = html.Tr([html.Td("3", style={
-               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("AB-F8-AE-E1-3A-40"), html.Td("Some Info")])
+               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("AB-F8-AE-E1-3A-40"), html.Td("69")])
 row4 = html.Tr([html.Td("4", style={
-               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("00:11:22:33:FF:EE"), html.Td("Some Info")])
+               "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td("00:11:22:33:FF:EE"), html.Td("85")])
+
 
 table_body = [html.Tbody([row1, row2, row3, row4])]
 table = dbc.Table(table_header + table_body,

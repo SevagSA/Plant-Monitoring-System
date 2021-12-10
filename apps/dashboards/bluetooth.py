@@ -8,6 +8,7 @@ from utils.helper_functions import get_information
 
 pin = 32
 
+# Set GPIO pins
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT)
@@ -22,9 +23,8 @@ table_header = [
         [html.Th("Devices", style={"color": constants.SECONDARY_COLOR})]))
 ]
 
-"""
-Table that will displayt the bluetooth devices
-"""
+
+# Table that will display the bluetooth devices
 table_body = [html.Tbody(id='table-body', children=[])]
 table = dbc.Table(table_header + table_body,
                   style={"color": "white", "margin-bottom": "60px"})
@@ -77,10 +77,10 @@ def update_output(n_clicks, input_value):
     Input('submit-val', 'n_clicks')
 )
 def update_bluetooth(n_clicks):
-    count = 0;
     """
     Get all bluetooth devices in proximity and display their information in a row of a table.
     """
+    count = 0
     rows = []
     devices = get_information()
     for idx, device in enumerate(devices):

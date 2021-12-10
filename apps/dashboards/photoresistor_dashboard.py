@@ -1,9 +1,10 @@
+
 import random
 import time
 
 import constants
-import dash_bootstrap_components as dbc
 import RPi.GPIO as GPIO
+import dash_bootstrap_components as dbc
 from app import app
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
@@ -22,17 +23,22 @@ threshold_value = 1500  # database value
 
 pin = 37
 pin2 = 35
+
+# Set GPIO pins
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT)
 GPIO.setup(pin2, GPIO.OUT)
 GPIO.output(pin2, False)
 GPIO.output(pin, False)
-# Our broker server for MQTT
+
+# Broker server for MQTT
 broker = 'broker.emqx.io'
 port = 1883
-# Our topic for the photoresistor
+
+# Topic for the photoresistor
 topic = "iot/photoresistor/team3"
+
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 username = 'emqx'

@@ -9,9 +9,12 @@ from rfid_config import get_auth_user, get_temp_threshold, set_temp_threshold
 from utils.helper_functions import get_temperature, motor_on, send_email
 
 pin = 38
+
+# Set GPIO pins
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT)
+
 time_of_day = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 temperature_list = []
@@ -36,7 +39,7 @@ layout = html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
             dcc.Input(id='temperature-threshold', type='number',
                       value=get_temp_threshold(get_auth_user())),
-            dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0, 
+            dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0,
                        style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='temperature-threshold-text',
                    children='Please enter a temperature threshold.', style={"color": "white"}),
@@ -71,9 +74,8 @@ def run_script_onClick(n_clicks):
     current_temperature = get_temperature()
     if threshold_value and current_temperature > threshold_value:
         send_email()
-    print("HIII")
+
     temperature_list.append(current_temperature)
-    print(temperature_list)
     return {
         'data': [
             {'x': time_of_day, 'y': temperature_list,
