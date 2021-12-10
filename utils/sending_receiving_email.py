@@ -6,13 +6,13 @@ import imaplib
 from .dc_motor import motor_on
 # GPIO.setwarnings(False)
 
-
+# sends an email with whatever message provided
 def send_email(text):
     sender = "vanieraliiot@gmail.com"
     password = "CrazyChicken123"
     receiver = "vanieraliiot@gmail.com"
     port = 465
-    subject = "From Rpi Ali Lezzeik"
+    subject = "Home System"
     message = 'Subject: {}\n\n{}'.format(subject, text)
     context = ssl.create_default_context()
     context = ssl.create_default_context()
@@ -20,7 +20,7 @@ def send_email(text):
         server.login(sender, password)
         server.sendmail(sender, receiver, message)
 
-
+# checks for email and yes/no response by user
 def receive_email():
     while True:
         mail = imaplib.IMAP4_SSL('imap.gmail.com')

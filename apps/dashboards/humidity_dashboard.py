@@ -22,10 +22,6 @@ layout = html.Div([
         id='humidity-graph',
         figure={}
     ),
-    html.Div([
-        dbc.Button("Get Humidity", id='get-humidity-btn', n_clicks=0,
-                   style={'background-color': constants.THIRD_COLOR, 'border': 'none'}, className="me-1"),
-    ], style={'display': 'flex', 'justify-content': 'space-between'})  ,
     dcc.Interval(
         id="photoresistor-interval", interval=1*10000, n_intervals=0)
     

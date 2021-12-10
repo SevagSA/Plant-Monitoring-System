@@ -36,7 +36,7 @@ layout = html.Div([
             # html.Div(id='output-container-button', children='Hit the button to update.'),
             dcc.Input(id='temperature-threshold', type='number',
                       value=get_temp_threshold(get_auth_user())),
-            dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0,
+            dbc.Button('Submit Threshold', id='submit-temperature-threshold', type='submit', n_clicks=0, 
                        style={'background-color': constants.THIRD_COLOR, 'border': 'none', 'height': '45px', 'margin': '10px 0px'}, className="me-1"),
             html.P(id='temperature-threshold-text',
                    children='Please enter a temperature threshold.', style={"color": "white"}),
@@ -50,7 +50,7 @@ layout = html.Div([
 @app.callback(Output('temperature-threshold-text', 'children'), [Input('submit-temperature-threshold', 'n_clicks')], [State('temperature-threshold', 'value')],)
 def update_output(n_clicks, input_value):
     """
-    Update temperature threshold.
+    Update temperature threshold in the database.
     """
     global threshold_value
     threshold_value = input_value
@@ -71,8 +71,9 @@ def run_script_onClick(n_clicks):
     current_temperature = get_temperature()
     if threshold_value and current_temperature > threshold_value:
         send_email()
-
+    print("HIII")
     temperature_list.append(current_temperature)
+    print(temperature_list)
     return {
         'data': [
             {'x': time_of_day, 'y': temperature_list,

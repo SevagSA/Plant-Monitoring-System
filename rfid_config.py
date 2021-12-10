@@ -39,6 +39,8 @@ def get_auth_user():
 
 
 def set_auth_user(rfid_tag):
+    if rfid_tag == None:
+        rfid_tag = "None"
     with open("current_rfid_tag.txt", "w") as file:
         file.write(rfid_tag)
         file.close() 

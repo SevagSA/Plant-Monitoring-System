@@ -2,11 +2,12 @@ import smtplib
 import ssl
 import time
 
-led = 33
 
 
 def email_send():
-
+    """
+    Sends an email to the user that the light levels have exceeded given threshold
+    """
     sender = "vanieraliiot@gmail.com"
     password = "CrazyChicken123"
     receiver = "vanieraliiot@gmail.com"
@@ -24,6 +25,9 @@ def email_send():
 
 
 def user_send_email(message):
+    """
+    Sends an email to the user with any message provided
+    """
     sender = "vanieraliiot@gmail.com"
     password = "CrazyChicken123"
     receiver = "vanieraliiot@gmail.com"

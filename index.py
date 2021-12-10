@@ -19,10 +19,11 @@ CONTENT_STYLE = {
 
 # For LED
 pin = 40
+relay_pin = 32
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT)
-
+GPIO.setup(relay_pin, GPIO.OUT)
 content = html.Div([html.Div(id='page-content'), ], style=CONTENT_STYLE)
 
 SIDEBAR_STYLE = {
@@ -84,9 +85,10 @@ sidebar = html.Div(
     style=SIDEBAR_STYLE,
 )
 
-
-app.layout = html.Div([dcc.Location(id="url"), sidebar, content], style={
-                      "background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
+app.layout = html.Div(id='main-div',
+                      children=[
+                          html.Div([dcc.Location(id="url"), sidebar, content])],
+                    style={"background-color": constants.PRIMARY_COLOR, "min-height": "100vh"})
 
 
 @app.callback(
@@ -94,11 +96,14 @@ app.layout = html.Div([dcc.Location(id="url"), sidebar, content], style={
     Input('led-btn', 'n_clicks'),)
 def update_output(n_clicks):
     if (n_clicks % 2 == 1):
+        print("LED ON")
         GPIO.output(pin, True)
+        GPIO.output(relay_pin, False)
         return "Currently the LED is On"
 
     else:
         GPIO.output(pin, False)
+        GPIO.output(relay_pin, True)
         return "Currently the LED is Off"
 
 

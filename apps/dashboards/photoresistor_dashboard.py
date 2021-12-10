@@ -21,12 +21,17 @@ values = []
 threshold_value = 1500  # database value
 
 pin = 37
+pin2 = 35
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT)
-
+GPIO.setup(pin2, GPIO.OUT)
+GPIO.output(pin2, False)
+GPIO.output(pin, False)
+# Our broker server for MQTT
 broker = 'broker.emqx.io'
 port = 1883
+# Our topic for the photoresistor
 topic = "iot/photoresistor/team3"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
@@ -132,6 +137,9 @@ def connect_mqtt() -> mqtt_client:
 
 
 def subscribe(client: mqtt_client):
+    """
+    Subscribes to the photoresistor topic, which is being published by the MQTT on the NodeMCU side.
+    """
     def on_message(client, userdata, msg):
         values.append(int(msg.payload.decode()))
 
@@ -140,9 +148,10 @@ def subscribe(client: mqtt_client):
             if threshold_value and values[0] > threshold_value:
                 led_on()
                 GPIO.output(pin, True)
+                GPIO.output(pin2, True)
                 time.sleep(3)
                 GPIO.output(pin, False)
-
+                GPIO.output(pin2, False)
     client.subscribe(topic)
     client.on_message = on_message
 
@@ -152,5 +161,4 @@ def run():
     Run the MQTT related functionality in a loop
     """
     client = connect_mqtt()
-    # subscribe(client)
     client.loop_start()

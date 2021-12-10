@@ -16,7 +16,7 @@ def send_email():
     """
     Send an email to ask the adminitrator to turn the fan on.
     """
-    return execute_email_service()
+    execute_email_service()
 
 
 def user_login(message):

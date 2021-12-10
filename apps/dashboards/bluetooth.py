@@ -22,7 +22,9 @@ table_header = [
         [html.Th("Devices", style={"color": constants.SECONDARY_COLOR})]))
 ]
 
-
+"""
+Table that will displayt the bluetooth devices
+"""
 table_body = [html.Tbody(id='table-body', children=[])]
 table = dbc.Table(table_header + table_body,
                   style={"color": "white", "margin-bottom": "60px"})
@@ -75,6 +77,7 @@ def update_output(n_clicks, input_value):
     Input('submit-val', 'n_clicks')
 )
 def update_bluetooth(n_clicks):
+    count = 0;
     """
     Get all bluetooth devices in proximity and display their information in a row of a table.
     """
@@ -82,8 +85,9 @@ def update_bluetooth(n_clicks):
     devices = get_information()
     for idx, device in enumerate(devices):
         if devices.get(device) > threshold_value:
+            count += 1
             rows.append(
-                html.Tr([html.Td(idx, style={
+                html.Tr([html.Td(count, style={
                     "color": constants.SECONDARY_TEXT_COLOR, "width": "160px"}), html.Td(device), html.Td(devices.get(device))])
             )
     return rows

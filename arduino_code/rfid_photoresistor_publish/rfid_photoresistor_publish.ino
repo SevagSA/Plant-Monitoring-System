@@ -3,8 +3,8 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-const char* ssid = "BELL126";
-const char* password = "2EE4A4EA";
+const char* ssid = "ios6x";
+const char* password = "Captain Jack";
 
 
 const char* mqtt_server = "broker.emqx.io";
@@ -123,6 +123,5 @@ void loop() {
     rfid.PICC_HaltA();
     rfid.PCD_StopCrypto1();
   }
-
 
   }
